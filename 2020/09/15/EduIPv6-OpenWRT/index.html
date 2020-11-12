@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>科学与IPv6兼得的OpenWRT | 南雍随笔</title><meta name="keywords" content="Garbage"><meta name="author" content="YDJSIR"><meta name="copyright" content="YDJSIR"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="这是YDJSIR对嵌入式设备的第一次尝试，当然显然也不会是最后一次。 本文是一篇混杂着大量感想的技术分享，也许可读性较低，但也可能对你有帮助。 如果你只是想要一个支持IPv6校园网的路由器，为什么不直接买个小米&#x2F;华为&#x2F;TP-Link的新款路由器并将IPv6模式设置为 桥 模式然后愉快地享受原生的教育网IPv6畅游北邮人呢？没钱买新的话，直接买网件的路由器设置穿透模式就好了（华硕原版固件很可能不行）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科学与IPv6兼得的OpenWRT">
+<meta property="og:url" content="https://ydjsir.com.cn/2020/09/15/EduIPv6-OpenWRT/index.html">
+<meta property="og:site_name" content="南雍随笔">
+<meta property="og:description" content="这是YDJSIR对嵌入式设备的第一次尝试，当然显然也不会是最后一次。 本文是一篇混杂着大量感想的技术分享，也许可读性较低，但也可能对你有帮助。 如果你只是想要一个支持IPv6校园网的路由器，为什么不直接买个小米&#x2F;华为&#x2F;TP-Link的新款路由器并将IPv6模式设置为 桥 模式然后愉快地享受原生的教育网IPv6畅游北邮人呢？没钱买新的话，直接买网件的路由器设置穿透模式就好了（华硕原版固件很可能不行）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/OpenWRT-Cover.png">
+<meta property="article:published_time" content="2020-09-15T12:53:48.000Z">
+<meta property="article:modified_time" content="2020-10-05T08:31:45.385Z">
+<meta property="article:author" content="YDJSIR">
+<meta property="article:tag" content="Garbage">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/OpenWRT-Cover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ydjsir.com.cn/2020/09/15/EduIPv6-OpenWRT/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta name="baidu-site-verification" content="uFBXMIeWh3"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0e07e5c4aa664fe94520a0bde83524ac";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-165586204-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-165586204-2');
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"YEXLTXD83C","apiKey":"2133ece282fd37e2082ec6d241382fef","indexName":"YDJ_zh-CN","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-10-05 16:31:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">YDJSIR</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 项目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE引擎</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE学习资料库</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://jvm.ydjsir.com.cn/"><i class="fa-fw fas fa-plus-square"></i><span> JVVM项目-2020</span></a></li><li><a class="site-page" href="/peerTutor/"><i class="fa-fw fas fa-plus-square"></i><span> 朋辈导师-2020</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://hackathon2020eastchina.top"><i class="fa-fw fas fa-plus-square"></i><span> 2020华东Hackathon(筹)</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://en.ydjsir.com.cn/"><span> English</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/router2.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">南雍随笔</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 项目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE引擎</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE学习资料库</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://jvm.ydjsir.com.cn/"><i class="fa-fw fas fa-plus-square"></i><span> JVVM项目-2020</span></a></li><li><a class="site-page" href="/peerTutor/"><i class="fa-fw fas fa-plus-square"></i><span> 朋辈导师-2020</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://hackathon2020eastchina.top"><i class="fa-fw fas fa-plus-square"></i><span> 2020华东Hackathon(筹)</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://en.ydjsir.com.cn/"><span> English</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">科学与IPv6兼得的OpenWRT</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-15T12:53:48.000Z" title="发表于 2020-09-15 20:53:48">2020-09-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-05T08:31:45.385Z" title="更新于 2020-10-05 16:31:45">2020-10-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/">Tech</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/Hardware/">Hardware</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>这是YDJSIR对嵌入式设备的第一次尝试，当然显然也不会是最后一次。</p>
+<p>本文是一篇混杂着大量感想的技术分享，也许可读性较低，但也可能对你有帮助。</p>
+<p>如果你只是想要一个支持IPv6校园网的路由器，为什么不直接买个小米/华为/TP-Link的新款路由器并将IPv6模式设置为 <code>桥</code> 模式然后愉快地享受原生的教育网IPv6畅游北邮人呢？没钱买新的话，直接买网件的路由器设置穿透模式就好了（华硕原版固件很可能不行）</p>
+<h2 id="前传"><a href="#前传" class="headerlink" title="前传"></a>前传</h2><blockquote>
+<h3 id="着西装踏拖鞋：不舍得买好一点的悲剧"><a href="#着西装踏拖鞋：不舍得买好一点的悲剧" class="headerlink" title="着西装踏拖鞋：不舍得买好一点的悲剧"></a>着西装踏拖鞋：不舍得买好一点的悲剧</h3></blockquote>
+<p>YDJSIR先花了45元买了个没有品牌的的远古双千兆网卡服务器，CPU是奔腾E5200……然后回来发现这玩意噪音能让YDJSIR的舍友把YDJSIR打爆。</p>
+<p>后来YDJSIR看到了一个ZTE CT320主机，看着这D2550的CPU（哇！双核四线程1.86Ghz，DDR3双通道4GB内存！），1080p输出（VGA，HDMI，DVI），双USB 3.0，双千兆网卡，超级Professional的外观和160元的售价，YDJSIR心潮澎湃！好！立刻买了！</p>
+<p>后来YDJSIR发现这玩意就是个巨坑。由于这个机子里面愚蠢得不可方物的显卡（居然没有64位驱动，强行搞得这玩意没法装64位系统）和弱得难以想象的图形性能（Bilibili 480p播放都能卡成PPT……），YDJSIR几乎找不到这玩意作为一个正常主机使用的应用场景（YDJSIR暂时没有工控需求）……这个显卡还可以选QPI或者PCI模式（PCIe都走不了，我直呼内行）……这玩意的BIOS更是令YDJSIR无话可说。YDJSIR费尽九牛二虎之力都无法让它认出启动U盘，只好直接Rufus刷盘。这个机子里面有一个SATA口，但是那个电源配套线是特殊定制的，而且那个奇怪的2.5寸盘位竟然插不上普通的线材……关键是他体积还不小……</p>
+<blockquote>
+<h3 id="千言万语汇成一句话：怪不得卖这么便宜！"><a href="#千言万语汇成一句话：怪不得卖这么便宜！" class="headerlink" title="千言万语汇成一句话：怪不得卖这么便宜！"></a>千言万语汇成一句话：怪不得卖这么便宜！</h3><p>这个价位，是真的一分钱一分货！</p>
+</blockquote>
+<p>所以最后，YDJSIR只好给他刷个OpenWRT的X86超级集大成者镜像，拿来做一个主/旁路由+NAS主机（外接USB 3.0硬盘盒）算了……YDJSIR现在甚至还没找到接盘侠……在线自闭……</p>
+<h2 id="正传"><a href="#正传" class="headerlink" title="正传"></a>正传</h2><p>经过了不懈的尝试，加之与YDJSIR某初中隔壁班同学的亲切友好的交流，YDJSIR决定从 Newifi 3 D2 开始下手。YDJSIR了解了校园网IPv6在OpenWRT上的部署，并感觉这样做很有前途（YDJSIR才想不到竟然你南竟然会在宿舍区全面部署IPv6呢……</p>
+<p>为了体验拆包的快感，YDJSIR购买了一个99新的带原包装的 Newifi 3 D2 并开始着手折腾。然后下面是YDJSIR对目前YDJSIR收集到的技术方案的尝试以及结果：</p>
+<blockquote>
+<h4 id="全文总参考链接"><a href="#全文总参考链接" class="headerlink" title="全文总参考链接"></a>全文总参考链接</h4><p><a target="_blank" rel="noopener" href="http://blog.kompaz.win/2017/02/22/OpenWRT%20IPv6%20%E9%85%8D%E7%BD%AE/">OpenWRT IPv6 三种配置方式 | Kompass</a></p>
+</blockquote>
+<h3 id="路线一：NAT"><a href="#路线一：NAT" class="headerlink" title="路线一：NAT"></a>路线一：NAT</h3><blockquote>
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://koolshare.cn/thread-24920-1-1.html">WAN口获取单一IPv6地址时，内网使用IPv6的方法（教育网可用） - 华硕固件 - KoolShare - 源于玩家 服务玩家</a></p>
+</blockquote>
+<p>首先，该帖子的背景环境并不是OpenWRT。其次，该方案实现前提的条件就是WAN口能拿到IPv6地址，然而事实上无论是OpenWRT官方固件还是YDJSIR四处搜集的第三方固件，均无法直接在南京大学一组团宿舍教育网网口获得IPv6地址。该方案没有可实现的基础，直接放弃。</p>
+<p>该方案推荐梅林/老毛子固件用户进行尝试。下面附一个老毛子支持IPv6的教程。</p>
+<blockquote>
+<h4 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zafu/p/9186966.html">老毛子 Padavan 路由器固件开启教育网 IPv6 并实现IPv6转发 - rebeca8 - 博客园</a></p>
+</blockquote>
+<h3 id="路线二：中继"><a href="#路线二：中继" class="headerlink" title="路线二：中继"></a>路线二：中继</h3><p>此方案实测在南京大学一组团宿舍区内无法使用。</p>
+<p>详情请参考全文总参考链接部分那个链接。</p>
+<p>知道你不想翻回去，这里再贴一次。</p>
+<blockquote>
+<h4 id="全文总参考链接-1"><a href="#全文总参考链接-1" class="headerlink" title="全文总参考链接"></a>全文总参考链接</h4><p><a target="_blank" rel="noopener" href="http://blog.kompaz.win/2017/02/22/OpenWRT%20IPv6%20%E9%85%8D%E7%BD%AE/">OpenWRT IPv6 三种配置方式 | Kompass</a></p>
+</blockquote>
+<h3 id="路线三：穿透"><a href="#路线三：穿透" class="headerlink" title="路线三：穿透"></a>路线三：穿透</h3><blockquote>
+<h4 id="参考链接-2"><a href="#参考链接-2" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://www.polarxiong.com/archives/%E6%95%99%E8%82%B2%E7%BD%91DD-WRT-OpenWrt%E7%94%A8%E4%B8%8AIPv6-%E4%BB%A5%E5%8D%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E4%B8%BA%E4%BE%8B.html">教育网DD-WRT／OpenWrt用上IPv6——以南京大学为例 - Penguin</a></p>
+</blockquote>
+<p>事实上，这个教程也是YDJSIR的那个同学实现的方式，也是YDJSIR唯一实现成功的方式。他采用了自行编译的OpenWRT固件（基于18.06稳定版）。然而很可惜的是他没有保存当时编译的配置，也没有保存当时编译的结果。</p>
+<p>YDJSIR当然知道部署其他插件相较于部署这个教程里面的IPv6相关设置而言要复杂得多。因而YDJSIR一开始选择了在第三方做好的固件上进行如此配置的方案。</p>
+<p>然后YDJSIR发现，在OpenWRT里面， <code>kmod-ebtables</code> 并不是一个编译的时候默认打上的包。更要命的是，这种内核相关的包并不是可以随意安装的！必须保证内核版本完全相同！（是精确到GitHub上哪一次push那种）。这意味着，YDJSIR找到的绝大多数的整合好的固件并不能直接使用！这意味着YDJSIR需要自行编译固件。</p>
+<p>YDJSIR先是测试了OpenWRT官方提供的19.07稳定版固件，顺利通过opkg下载安装 <code>ebtables</code> 全家桶，按照上述教程部署IPv6成功！宿舍内IPv4和IPv6到校内镜像站都可以跑到千兆水平（900+Mbps）YDJSIR狂喜。</p>
+<p>然后YDJSIR发现编译这玩意需要一个完整的Linux环境，YDJSIR采用的 <code>Lienol</code> 和 <code>Lean</code> 源码仓库均推荐 <code>Ubuntu 18.04 LTS x86_64</code> 。YDJSIR首先改用学校的KMS更改激活类型为教育版，尝试了WSL1，后来发现各种编译依赖装不上；YDJSIR将系统更新到2004，把WSL升级到了WSL2，结果发现各类依赖还是打不上。（全部是默认配置，采用从Windows Store获取的Ubuntu 20.04 LTS，经过zty同学测试，实体机安装的Ubuntu 20.04 LTS是可以编译成功的）。YDJSIR最后无奈地基于自己的XPS 15 7590（i5-9300H+1650）新购置的32G内存条改用HyperV模拟一个完整的Ubuntu。</p>
+<blockquote>
+<h4 id="鬼知道为了顺利下载相关的库还有写完配置文件后下载补充代码中YDJSIR费了多大的劲！"><a href="#鬼知道为了顺利下载相关的库还有写完配置文件后下载补充代码中YDJSIR费了多大的劲！" class="headerlink" title="鬼知道为了顺利下载相关的库还有写完配置文件后下载补充代码中YDJSIR费了多大的劲！"></a>鬼知道为了顺利下载相关的库还有写完配置文件后下载补充代码中YDJSIR费了多大的劲！</h4></blockquote>
+<h4 id="HyperV真香——启动速度快内存占用超级低！"><a href="#HyperV真香——启动速度快内存占用超级低！" class="headerlink" title="HyperV真香——启动速度快内存占用超级低！"></a><del>HyperV真香——启动速度快内存占用超级低！</del></h4><p>好了，这回YDJSIR可以自己编译了。无奈的是YDJSIR在编译的过程中被配置文件折磨了n次，YDJSIR也不敢开全线程，只敢单线程跑，编译一次就要跑到3个小时……YDJSIR最后拿着自己的固件，想到拿着这玩意也许以后还会遇到更多的奇奇怪怪的BUG，所以……YDJSIR最后选择让别人来编译带上插件和 <code>kmod-ebtables</code> 。</p>
+<p>好了，YDJSIR顺利地拿到了固件。然而YDJSIR很快发现第三方直接编译的文件的大小远远大于第三方特殊优化过的固件……然后YDJSIR就开始了大量的尝试。然而，YDJSIR发现拥有插件的奇怪固件再按照上述教程操作的时候前几步都毫无问题，但是到最后一步进行桥接设置完成后(下面的指令执行完成之后)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brctl addif br0 vlan2</span><br></pre></td></tr></table></figure>
+
+<p>YDJSIR无奈地发现无论是IPv4还是IPv6的数据包的传输速度都会出现速度从0快速上升到100Mbps而后迅速掉速掉到1-2Mbps的奇怪现象，DNS解析的时长也显著增长。而与之形成鲜明对比的是，在没有大批插件或者是原版系统进行完所有设置之后的情况下，网络访问的速度都能跑满千兆！</p>
+<blockquote>
+<h4 id="为你南的千兆网接入欢呼吧！"><a href="#为你南的千兆网接入欢呼吧！" class="headerlink" title="为你南的千兆网接入欢呼吧！"></a>为你南的千兆网接入欢呼吧！</h4><h4 id="你南甚至将在本学期内完成宿舍内对Wifi-6的全面部署"><a href="#你南甚至将在本学期内完成宿舍内对Wifi-6的全面部署" class="headerlink" title="你南甚至将在本学期内完成宿舍内对Wifi 6的全面部署"></a><del>你南甚至将在本学期内完成宿舍内对Wifi 6的全面部署</del></h4></blockquote>
+<p>然而，YDJSIR因为打上了太多插件，以致相当地难以排查，且YDJSIR的舍友已经对YDJSIR承接的频繁掉线的Wifi表示不满……</p>
+<p>YDJSIR还是在宿舍Wifi部署完毕后，再行基于YDJSIR的Newifi进行尝试吧。</p>
+<h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2><p>YDJSIR打算接下来从两方面进行尝试：</p>
+<blockquote>
+<p>显然，YDJSIR以后绝对不会选择那些SNAPHOT版本了。YDJSIR一定会选那些稳定版本，以保证缺了什么奇奇怪怪的kmod模块的时候YDJSIR可以拿opkg安装。</p>
+<p>事实上。ebtables这个包在OpenWRT里面好像早就不更新了……而且，只差几个commit的内核模块理论上应该还是可以强制运行的吧……</p>
+<p>然而，opkg绝对不会让你安装内核版本不对的包。</p>
+<p>YDJSIR对新的功能没有什么奇特的要求，YDJSIR只求能用就好。因而，YDJSIR将毫不犹豫地选择release版本。</p>
+</blockquote>
+<h3 id="方案一：直接修改编译配置文件以直接编译出所需的固件"><a href="#方案一：直接修改编译配置文件以直接编译出所需的固件" class="headerlink" title="方案一：直接修改编译配置文件以直接编译出所需的固件"></a>方案一：直接修改编译配置文件以直接编译出所需的固件</h3><p>这一步似乎没什么可以补充了……毕竟这是最常见也最能一劳永逸解决所有问题的办法……但是YDJSIR还是要想办法搞明白这套配置系统……</p>
+<h3 id="方案二：从官方放出的固件开始依赖opkg一个个把插件补上"><a href="#方案二：从官方放出的固件开始依赖opkg一个个把插件补上" class="headerlink" title="方案二：从官方放出的固件开始依赖opkg一个个把插件补上"></a>方案二：从官方放出的固件开始依赖opkg一个个把插件补上</h3><p>YDJSIR认为这可能是一个更稳妥的方案。至少YDJSIR可以更快速地控制变量进行快速试错……</p>
+<p>好了，YDJSIR还是先享受下这功能强大，价格低廉的优秀路由器吧！</p>
+<p>想想，你以不到百元获得一个可以精准识别流量并进行各式各样的处理与转发的近乎拥有企业级路由的功能的千兆双频路由器，它不香吗？</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>YDJSIR日后的主攻方向并不是嵌入式。然而，YDJSIR既然着眼于后端，那么YDJSIR显然必须熟悉一切网络相关的设备。OpenWRT给了YDJSIR接触许多网络名词与网络技术的机会。更重要的是，它的开源特性和强大的社区资源，给了YDJSIR近乎无限的探索空间。</p>
+<p>YDJSIR对OpenWRT的探索虽然暂告一段落，但是显然长期不会结束。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">YDJSIR</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://ydjsir.com.cn/2020/09/15/EduIPv6-OpenWRT/">https://ydjsir.com.cn/2020/09/15/EduIPv6-OpenWRT/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ydjsir.com.cn" target="_blank">南雍随笔</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Garbage/">Garbage</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f0583da1a05b538" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/05/productSelection/"><img class="prev-cover" src="https://oss.ydjsir.com.cn/GitPages/productSelection/cover.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">审视硬件产品选购</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/25/MSCKICKOFF-2020-Review/"><img class="next-cover" src="https://oss.ydjsir.com.cn/GitPages/MSC-KICKOFF/MSC-KICKOFF-.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MSC-KICKOFF-2020-Review</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/07/22/StoryOfX79-P106/" title="X79与P106的美妙（×）邂逅"><img class="cover" src="https://oss.ydjsir.com.cn/GitPages/X79andP106/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-22</div><div class="title">X79与P106的美妙（×）邂逅</div></div></a></div><div><a href="/2020/06/27/1500rPC-2020-6/" title="1500元装机实录-2020年7月"><img class="cover" src="https://oss.ydjsir.com.cn/GitPages/1500rPC/front.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-27</div><div class="title">1500元装机实录-2020年7月</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">YDJSIR</div><div class="author-info__description">YDJSIR的网站</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/YDJSIR-EDU"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/YDJSIR-NJU" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ydjsirhere@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">YDJSIR争取每月更新……</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E4%BC%A0"><span class="toc-number">1.</span> <span class="toc-text">前传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9D%80%E8%A5%BF%E8%A3%85%E8%B8%8F%E6%8B%96%E9%9E%8B%EF%BC%9A%E4%B8%8D%E8%88%8D%E5%BE%97%E4%B9%B0%E5%A5%BD%E4%B8%80%E7%82%B9%E7%9A%84%E6%82%B2%E5%89%A7"><span class="toc-number">1.1.</span> <span class="toc-text">着西装踏拖鞋：不舍得买好一点的悲剧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%83%E8%A8%80%E4%B8%87%E8%AF%AD%E6%B1%87%E6%88%90%E4%B8%80%E5%8F%A5%E8%AF%9D%EF%BC%9A%E6%80%AA%E4%B8%8D%E5%BE%97%E5%8D%96%E8%BF%99%E4%B9%88%E4%BE%BF%E5%AE%9C%EF%BC%81"><span class="toc-number">1.2.</span> <span class="toc-text">千言万语汇成一句话：怪不得卖这么便宜！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E4%BC%A0"><span class="toc-number">2.</span> <span class="toc-text">正传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E6%80%BB%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.0.1.</span> <span class="toc-text">全文总参考链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E4%B8%80%EF%BC%9ANAT"><span class="toc-number">2.1.</span> <span class="toc-text">路线一：NAT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="toc-number">2.1.2.</span> <span class="toc-text">参考链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E4%BA%8C%EF%BC%9A%E4%B8%AD%E7%BB%A7"><span class="toc-number">2.2.</span> <span class="toc-text">路线二：中继</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E6%96%87%E6%80%BB%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">全文总参考链接</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E4%B8%89%EF%BC%9A%E7%A9%BF%E9%80%8F"><span class="toc-number">2.3.</span> <span class="toc-text">路线三：穿透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">参考链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AC%BC%E7%9F%A5%E9%81%93%E4%B8%BA%E4%BA%86%E9%A1%BA%E5%88%A9%E4%B8%8B%E8%BD%BD%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BA%93%E8%BF%98%E6%9C%89%E5%86%99%E5%AE%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E8%A1%A5%E5%85%85%E4%BB%A3%E7%A0%81%E4%B8%ADYDJSIR%E8%B4%B9%E4%BA%86%E5%A4%9A%E5%A4%A7%E7%9A%84%E5%8A%B2%EF%BC%81"><span class="toc-number">2.3.2.</span> <span class="toc-text">鬼知道为了顺利下载相关的库还有写完配置文件后下载补充代码中YDJSIR费了多大的劲！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HyperV%E7%9C%9F%E9%A6%99%E2%80%94%E2%80%94%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6%E5%BF%AB%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E8%B6%85%E7%BA%A7%E4%BD%8E%EF%BC%81"><span class="toc-number">2.3.3.</span> <span class="toc-text">HyperV真香——启动速度快内存占用超级低！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BD%A0%E5%8D%97%E7%9A%84%E5%8D%83%E5%85%86%E7%BD%91%E6%8E%A5%E5%85%A5%E6%AC%A2%E5%91%BC%E5%90%A7%EF%BC%81"><span class="toc-number">2.3.4.</span> <span class="toc-text">为你南的千兆网接入欢呼吧！</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%A0%E5%8D%97%E7%94%9A%E8%87%B3%E5%B0%86%E5%9C%A8%E6%9C%AC%E5%AD%A6%E6%9C%9F%E5%86%85%E5%AE%8C%E6%88%90%E5%AE%BF%E8%88%8D%E5%86%85%E5%AF%B9Wifi-6%E7%9A%84%E5%85%A8%E9%9D%A2%E9%83%A8%E7%BD%B2"><span class="toc-number">2.3.5.</span> <span class="toc-text">你南甚至将在本学期内完成宿舍内对Wifi 6的全面部署</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD"><span class="toc-number">3.</span> <span class="toc-text">未完待续</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BB%A5%E7%9B%B4%E6%8E%A5%E7%BC%96%E8%AF%91%E5%87%BA%E6%89%80%E9%9C%80%E7%9A%84%E5%9B%BA%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">方案一：直接修改编译配置文件以直接编译出所需的固件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9A%E4%BB%8E%E5%AE%98%E6%96%B9%E6%94%BE%E5%87%BA%E7%9A%84%E5%9B%BA%E4%BB%B6%E5%BC%80%E5%A7%8B%E4%BE%9D%E8%B5%96opkg%E4%B8%80%E4%B8%AA%E4%B8%AA%E6%8A%8A%E6%8F%92%E4%BB%B6%E8%A1%A5%E4%B8%8A"><span class="toc-number">3.2.</span> <span class="toc-text">方案二：从官方放出的固件开始依赖opkg一个个把插件补上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">4.</span> <span class="toc-text">结语</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/10/28/theGirlInTheDreamOfYDJSIR/" title="The Girl In The Dream Of YDJSIR"><img src="https://oss.ydjsir.com.cn/GitPages/schools/ZSJZskirt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Girl In The Dream Of YDJSIR"/></a><div class="content"><a class="title" href="/2020/10/28/theGirlInTheDreamOfYDJSIR/" title="The Girl In The Dream Of YDJSIR">The Girl In The Dream Of YDJSIR</a><time datetime="2020-10-28T11:59:13.000Z" title="发表于 2020-10-28 19:59:13">2020-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/05/productSelection/" title="审视硬件产品选购"><img src="https://oss.ydjsir.com.cn/GitPages/productSelection/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="审视硬件产品选购"/></a><div class="content"><a class="title" href="/2020/10/05/productSelection/" title="审视硬件产品选购">审视硬件产品选购</a><time datetime="2020-10-05T08:48:56.000Z" title="发表于 2020-10-05 16:48:56">2020-10-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/15/EduIPv6-OpenWRT/" title="科学与IPv6兼得的OpenWRT"><img src="https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/OpenWRT-Cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="科学与IPv6兼得的OpenWRT"/></a><div class="content"><a class="title" href="/2020/09/15/EduIPv6-OpenWRT/" title="科学与IPv6兼得的OpenWRT">科学与IPv6兼得的OpenWRT</a><time datetime="2020-09-15T12:53:48.000Z" title="发表于 2020-09-15 20:53:48">2020-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/25/MSCKICKOFF-2020-Review/" title="MSC-KICKOFF-2020-Review"><img src="https://oss.ydjsir.com.cn/GitPages/MSC-KICKOFF/MSC-KICKOFF-.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MSC-KICKOFF-2020-Review"/></a><div class="content"><a class="title" href="/2020/08/25/MSCKICKOFF-2020-Review/" title="MSC-KICKOFF-2020-Review">MSC-KICKOFF-2020-Review</a><time datetime="2020-08-25T01:24:02.000Z" title="发表于 2020-08-25 09:24:02">2020-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/24/2020SumNJUSocialResearch/" title="高素质人口流动与地区经济发展之关系的研究"><img src="https://oss.ydjsir.com.cn/GitPages/2020SumNJUSocialResearch/JM-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高素质人口流动与地区经济发展之关系的研究"/></a><div class="content"><a class="title" href="/2020/08/24/2020SumNJUSocialResearch/" title="高素质人口流动与地区经济发展之关系的研究">高素质人口流动与地区经济发展之关系的研究</a><time datetime="2020-08-24T07:14:54.000Z" title="发表于 2020-08-24 15:14:54">2020-08-24</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By YDJSIR</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">本站正體中文內容系前端插件自動生成</div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn"><span>粤ICP备20028390号-1</span></a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302320916"><img class="icp-icon" src="/img/icp.png" alt="icon"/><span>苏公网安备 32011302320916号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>

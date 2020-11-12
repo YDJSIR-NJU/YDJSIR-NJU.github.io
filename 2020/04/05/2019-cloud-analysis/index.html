@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>“技术采纳生命周期模型”视域下的云计算 | 南雍随笔</title><meta name="keywords" content="Cloud"><meta name="author" content="YDJSIR"><meta name="copyright" content="YDJSIR"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="余东骏^1^,  陈益超^1^, 冯国豪^1^, 周顺超^1^ ^1^(南京大学软件学院, 江苏 南京 210023)  摘 要:   20世纪80年代末，云计算的概念被首次提出，至今，云计算已有极大发展，渗入信息行业的各个方面，并在可见的未来里仍有光明的前景。本文尝试运用“技术采纳生命周期模型”来具体分析云计算发展的历史与现状，进而得出对云计算未来的分析与展望。云计算经历了早期市场，跨越了“鸿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“技术采纳生命周期模型”视域下的云计算">
+<meta property="og:url" content="https://ydjsir.com.cn/2020/04/05/2019-cloud-analysis/index.html">
+<meta property="og:site_name" content="南雍随笔">
+<meta property="og:description" content="余东骏^1^,  陈益超^1^, 冯国豪^1^, 周顺超^1^ ^1^(南京大学软件学院, 江苏 南京 210023)  摘 要:   20世纪80年代末，云计算的概念被首次提出，至今，云计算已有极大发展，渗入信息行业的各个方面，并在可见的未来里仍有光明的前景。本文尝试运用“技术采纳生命周期模型”来具体分析云计算发展的历史与现状，进而得出对云计算未来的分析与展望。云计算经历了早期市场，跨越了“鸿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oss.ydjsir.com.cn/GitPages/CloudTechAdoption/techadoptModel.png">
+<meta property="article:published_time" content="2020-04-04T23:57:40.000Z">
+<meta property="article:modified_time" content="2020-06-23T13:05:11.917Z">
+<meta property="article:author" content="YDJSIR">
+<meta property="article:tag" content="Cloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.ydjsir.com.cn/GitPages/CloudTechAdoption/techadoptModel.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ydjsir.com.cn/2020/04/05/2019-cloud-analysis/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta name="baidu-site-verification" content="uFBXMIeWh3"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0e07e5c4aa664fe94520a0bde83524ac";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-165586204-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-165586204-2');
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"YEXLTXD83C","apiKey":"2133ece282fd37e2082ec6d241382fef","indexName":"YDJ_zh-CN","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: true
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-06-23 21:05:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">YDJSIR</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 项目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE引擎</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE学习资料库</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://jvm.ydjsir.com.cn/"><i class="fa-fw fas fa-plus-square"></i><span> JVVM项目-2020</span></a></li><li><a class="site-page" href="/peerTutor/"><i class="fa-fw fas fa-plus-square"></i><span> 朋辈导师-2020</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://hackathon2020eastchina.top"><i class="fa-fw fas fa-plus-square"></i><span> 2020华东Hackathon(筹)</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://en.ydjsir.com.cn/"><span> English</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://oss.ydjsir.com.cn/GitPages/CloudTechAdoption/clip_image002-1592408998800.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">南雍随笔</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 项目</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE引擎</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE学习资料库</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://jvm.ydjsir.com.cn/"><i class="fa-fw fas fa-plus-square"></i><span> JVVM项目-2020</span></a></li><li><a class="site-page" href="/peerTutor/"><i class="fa-fw fas fa-plus-square"></i><span> 朋辈导师-2020</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://hackathon2020eastchina.top"><i class="fa-fw fas fa-plus-square"></i><span> 2020华东Hackathon(筹)</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://en.ydjsir.com.cn/"><span> English</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">“技术采纳生命周期模型”视域下的云计算</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-04-04T23:57:40.000Z" title="发表于 2020-04-05 07:57:40">2020-04-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-06-23T13:05:11.917Z" title="更新于 2020-06-23 21:05:11">2020-06-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/">Tech</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/Reports/">Reports</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">9.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>30分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>余东骏^1^,  陈益超^1^, 冯国豪^1^, 周顺超^1^</p>
+<p>^1^(南京大学软件学院, 江苏 南京 210023)</p>
+</blockquote>
+<p>摘 要:   20世纪80年代末，云计算的概念被首次提出，至今，云计算已有极大发展，渗入信息行业的各个方面，并在可见的未来里仍有光明的前景。本文尝试运用“技术采纳生命周期模型”来具体分析云计算发展的历史与现状，进而得出对云计算未来的分析与展望。云计算经历了早期市场，跨越了“鸿沟”，走过了“保龄球道”，经历了“龙卷风暴”，目前已达到“主街”阶段。云计算当下的发展需要在继续为传统IT企业创新赋能的过程中，更注重传统行业的信息化改造浪潮所带来的巨大潜在市场，也要注意和当前大数据、物联网等新技术的共同发展。本文以中国国内市场为例，以国内的阿里云、腾讯云和华为云为例进行分析，以预测计算未来可能的发展方向与云计算未来的发展潜力，并提出一些基础的建议。</p>
+<a id="more"></a>
+<p>关键词:   云计算;技术采纳生命周期模型;信息化改造;市场预测</p>
+<p>中图法分类号:  TP311</p>
+<p>Cloud Computing under the framework of “ Category Maturity Life Cycle” Model</p>
+<p>YU Dong-Jun1,  CHEN Yi-Chao1,  FENG Guo-Hao1,  ZHOU Shun-Chao1</p>
+<p>1(Nanjing University (Xianlin Campus), Nanjing 210023, China)</p>
+<p><strong>Abstract</strong>: In the late 1980s, the concept of cloud computing was first proposed. Today, cloud computing has developed greatly and penetrated into all aspects of the information industry. Therefore, this research attempts to use the “Category Maturity Life Cycle” model to specifically analyze the history and current situation of cloud computing development so as to obtain the future analysis and outlook of cloud computing. In the early market of cloud computing, there have been three cloud service segmentation models: IaaS (Infrastructure as a service), SaaS (Software as a Service), and PaaS (Platform as a service), and these three models correspond to different application fields and scenarios which have their own characteristics. Cloud computing has gone through the early market, crossed the “Chasm”, passed the “Bowling Alley”, experienced the “Tornado”, and now has reached the “Main Street” stage. This research takes the Chinese  market’s Alibaba Cloud, Tencent Cloud, and Huawei Cloud as examples to analyze the current situation of cloud computing in the Chinese market, and analyzes the possible future of cloud computing potential globally.</p>
+<p><strong>Key words</strong>:  cloud computing; Category Maturity Life Cycle Model; informatization reform; market forecast</p>
+<h1 id="1-运用“技术采纳生命周期模型”对云计算历史的分析"><a href="#1-运用“技术采纳生命周期模型”对云计算历史的分析" class="headerlink" title="1   运用“技术采纳生命周期模型”对云计算历史的分析"></a><strong>1</strong>   运用“技术采纳生命周期模型”对云计算历史的分析</h1><p> 云计算（Cloud computing）是分布式计算的一种，指的是通过网络，“云”将巨大的数据计算处理程序分解成无数个小程序，然后通过多部逻辑服务器组成的系统处理、分析、整合这些小程序得到的结果并返回给用户的过程。[1] 云计算从概念的出现到技术的成熟经历了半个多世纪的时间，目前已经被较为广泛地应用于金融、科研、国防等各个领域并发挥着极为重要的作用。</p>
+<h2 id="1-1-先声"><a href="#1-1-先声" class="headerlink" title="1.1  先声"></a><strong>1.1</strong>  先声</h2><p>云计算的历史最早可追溯到1959年，Christopher Strachey在其发表的一篇论文(Time Sharing in Large Fast Computers) [2] 中首次正式提及了“虚拟化”的概念。虚拟化是指是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。[3]这正是云计算基础架构的核心，也是云计算发展的基础。随着信息技术的进步，除了虚拟化技术，分布式处理技术和并行计算技术也逐步成熟。时至1983年，Sun公司提出了“网络即计算机”的概念，试图改变PC一家独大的局面，但受限于当时有限的计算机与网络技术，这个仅仅停留在理论层面的项目仅过了两年便无疾而终。</p>
+<h2 id="1-2-早期市场"><a href="#1-2-早期市场" class="headerlink" title="1.2  早期市场"></a><strong>1.2</strong>  早期市场</h2><p> 经历了三十多年的前期积累，云服务迎来了它的早期市场阶段。这是一个振奋人心的时期。此时，云服务已经有了相应的三种细分模式（IasS, SaaS, PasS) 。一批以提供云计算为主要业务的公司出现。1999年3月，Salesforce成立，提供SaaS模式的云服务；1999年9月，LoudCloud成立，提供服务器出租服务，即IaaS。对云计算这一新技术持积极态度和有远见的先驱者成为云的首批消费者。</p>
+<h2 id="1-3-鸿沟与保龄球道"><a href="#1-3-鸿沟与保龄球道" class="headerlink" title="1.3  鸿沟与保龄球道"></a><strong>1.3</strong>  鸿沟与保龄球道</h2><p> 2006年对于云计算而言是一个相当重要的节点，因为这是云计算企业在大众市场寻求立足之地的时期。企业探索市场需求，试图生产完整产品满足消费者对云服务的需要。云服务逐渐跨越鸿沟，进入保龄球道阶段。2006年，Google首次提出“Cloud Computing”的概念；亚马逊提出了“Elastic Cloud Computing Services”，即弹性计算云服务，同时推出了IaaS服务平台AWS，提供了EC2等云服务器的租售服务。甚至在2010年前后，阿里云的王坚试图实现他的云构想时，他在阿里内部也遭遇了很大的阻力</p>
+<h2 id="1-4-龙卷风暴"><a href="#1-4-龙卷风暴" class="headerlink" title="1.4  龙卷风暴"></a><strong>1.4</strong>  龙卷风暴</h2><p>2008年，云计算真正迎来了属于它的万家灯火。这是一个大众逐步接受云计算的时期。大众市场开始过渡到使用云服务的阶段。云服务规模快速增长，功能日趋完善。大量传统企业试水云计算，并结合自身能力进行扩展和转型。云计算的市场竞争日趋激烈，市场中涌现出大量的新生势力，包括微软的Azure、IBM、VMWare等等，国内云服务巨头阿里云也是在这一年筹办与起步的。在2009年Salsforce公司发布的2008年公司财报上显示其云服务的收入超过了10亿美元；Amazon已经初步形成完整的云服务产品体系，并且在IaaS和云服务领域确立下来自己的市场领导者地位；而微软更是借助云计算从没落边缘起死回生，创造了IT界又一新的奇迹。2009年前后，在经历了服务器意外宕机导致DVD租赁业务暂停3日的事故后，Netflix开始将自己的流媒体服务器转移至AWS上。这个过程历时7年，Netflix的整个架构都为适配AWS提供的云环境进行了重构。云计算成为计算机领域备受关注的话题之一，与大数据，物联网共同代表了一段时期IT领域的发展趋势。</p>
+<h2 id="1-5-主街"><a href="#1-5-主街" class="headerlink" title="1.5  主街"></a><strong>1.5</strong>  主街</h2><p>2016年以后，云计算的技术已然足够成熟，正式进入了主街阶段。云计算不再是极客们与少数头部大公司的专属，而是成为每一个企业与个人都可以考虑的信息赋能工具。各类云产品，云服务不断涌现，各类新概念、新名词诸如NaaS(Network as a service)、FaaS(Function as a Service)不断被提出。上云成本不断降低，越来越多的个人开发者也可以借助云服务建立自己的小网站，搭建属于自己的互联网应用，笔者们也不例外。互联网上甚至出现了一批免费的空间可供个人开发者学习使用，这些云服务一定程度上也降低了他们的学习成本，从而更加促进了云计算技术的普及推广。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image001.png" alt="img"></p>
+<blockquote>
+<p>Fig 1  The scale of global cloud market and growth rate</p>
+<p>图1 全球云市场规模及增速</p>
+<p> 数据来源：Gartner，2019年1月, 图表来源于中国信息通信研究院.云计算发展白皮书,2019: Fig 1</p>
+</blockquote>
+<p>在此阶段，市场发展繁荣，社会基本接受云计算这一产品，而下一步的目标则是更好地挖掘市场潜力，而其中又以SaaS为突出案例。从SaaS服务来看，其服务类型多种多样，CRM、ERP、办公套件为其主要类型，商务智能应用、项目组合管理等服务增长迅猛，而这些业务都是典型的ToB业务，表明云计算在助力传统企业实现信息化过程中的显著作用。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image003.png" alt="img"></p>
+<blockquote>
+<p>Fig 2 The proportion of global SaaS service segment market</p>
+<p>图2  全球SaaS细分服务市场占比</p>
+<p>数据来源：中国信息通信研究院.云计算发展白皮书,2019: Fig 2,，2019年5月</p>
+</blockquote>
+<p>上述数据表明，IaaS虽仍占市场大头，但SaaS与PaaS的占比稳步提升。市场上传统的对云基础设施的客户固然还在，但是新入场的希望借力云计算实现创新赋能的传统行业客户日益增多，这一部分用户的规模相当庞大，对市场也提出了更多样化的要求与更易用、学习成本更低的产品与需求。云计算不再是一群极客们与少数头部大公司的专属，而成为每一个企业与个人都可以考虑的赋能工具，已逐步被大多数从业者接受。</p>
+<p>综上分析，云计算已经进入“技术采纳生命周期模型”的“主街”阶段。在此阶段，市场发展繁荣，社会基本接受云计算这一产品，而下一步的目标则是更好地挖掘市场潜力。这也带来了全新的挑战：“虚拟”的信息技术该如何与实际复杂的现实世界相匹配，实现快速部署与易于迁移复用？</p>
+<h1 id="2-主街——国内云计算市场分析"><a href="#2-主街——国内云计算市场分析" class="headerlink" title="2   主街——国内云计算市场分析"></a><strong>2</strong>   主街——国内云计算市场分析</h1><h2 id="2-1-总体概述"><a href="#2-1-总体概述" class="headerlink" title="2.1  总体概述"></a><strong>2.1</strong>  总体概述</h2><p>近年来，国内云计算发展态势良好，关键核心技术有所突破，新的应用场景不断被发掘出来，市场潜力不断被释放。我国的公有云、私有云市场均保持高速增长。2018 年我国云计算整体市场规模达962.8 亿元，增速39.2%。其中，公有云市场规模达到437 亿元，相比2017 年增长65.2%，预计2019-2022 年仍将处于快速增长状态，到2022 年市场规模将达到1731 亿元；私有云市场规模达525 亿元，较2017 年增长23.1%，预计未来几年将保持稳定增长，到2022 年市场规模将达到1172 亿元。[4]</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image006.png" alt="img"></p>
+<blockquote>
+<p>Fig 3 The scale of global public cloud services market and growth rate</p>
+<p>图3 我国公有云市场规模及增速</p>
+<p>数据来源：中国信息通信研究院.云计算发展白皮书,2019: Fig 3, 2019年5月</p>
+</blockquote>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image008.png" alt="img"></p>
+<blockquote>
+<p>Fig 4 The scale of global private cloud services market and growth rate</p>
+<p>图4 我国私有云市场规模及增速</p>
+<p>数据来源：中国信息通信研究院.云计算发展白皮书,2019: Fig 4, 2019年5月</p>
+</blockquote>
+<p>在公有云市场方面，IaaS 依然占据主要份额。2018 年IaaS 市场规模达到270 亿元，比2017 年增长81.8%；PaaS 市场规模为22 亿元，与去年相比上升了87.9%。未来几年企业对大数据、游戏和微服务等PaaS 产品的需求量将持续增长，PaaS 市场规模仍将保持较高的增速；SaaS 市场规模达到145 亿元，比2017 年增长了38.9%，增速较稳定。[4]</p>
+<p>私有云市场方面，软件和服务占比稳步提升。2018 年私有云硬件市场规模为371 亿元，占比70.6%，较2017 年有所下降；软件市场规模为83 亿元，占比为15.8%，与2017 年相比上升了0.2%；服务市场规模为71 亿元，占比13.6%，提高了0.3%。[4]</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image010.png" alt="img"></p>
+<blockquote>
+<p>Fig 5 The proportion of Chinese private cloud service segment market</p>
+<p>图5 中国私有云细分市场构成</p>
+<p>数据来源：中国信息通信研究院.云计算发展白皮书,2019: Fig 6,，2019年5月</p>
+</blockquote>
+<p>云计算提供商们也纷纷适应市场实际情况，针对世界上新一波信息化、智能化浪潮，为传统企业提供了多样化的、个性化的上云道路以助其完成新一轮数字化转型，也为传统上的IT企业乃至互联网企业创新赋能，提高整个行业乃至整个社会的运行效率。</p>
+<h2 id="2-2-“主街”上的国内云服务几例"><a href="#2-2-“主街”上的国内云服务几例" class="headerlink" title="2.2  “主街”上的国内云服务几例"></a><strong>2.2</strong>  “主街”上的国内云服务几例</h2><p>2018 年8 月，工业和信息化部印发了《推动企业上云实施指南（2018-2020 年）》（以下简称《实施指南》）。《实施指南》从总体要求、科学制定部署模式、按需合理选择云服务、稳妥有序实施上云、提升支撑服务能力、强化政策保障等方面提出了推动企业上云的工作要求和实施建议。《实施指南》提出了企业上云的工作目标。[4]</p>
+<p>当前无论是从国家政策支持还是市场反响来看，云计算都处于快速发展的主街上。为体现“技术采纳生命周期模型”中不同地位的市场主体的不同情况，下面对所举的例子进行了粗略的分类，其主要依据是中国信息通信研究院发布的云计算发展白皮书（2019）提供的市场份额方面的相关信息。</p>
+<p>据中国信息通信研究院调查统计，阿里云、天翼云、腾讯云占据公有云IaaS 市场份额前三，光环新网、UCloud、金山云（排名不分先后）则处于第二集团。阿里云、腾讯云、百度云等传统互联网企业则位于公有云PaaS 市场前三；用友、金蝶、畅捷等相对传统的行业软件提供商通位居公有云综合SaaS能力第一梯队；拥有国家背景的中国电信、浪潮、华为、曙光则处于政务云市场前列。[4]</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image012.png" alt="img"></p>
+<blockquote>
+<p>Fig 6 The scale of global private cloud services market and growth rate</p>
+<p>图6 2018年国内公有云IaaS市场份额占比</p>
+<p>数据来源：中国信息通信研究院.云计算发展白皮书,2019: Fig 7, 2019年5月</p>
+</blockquote>
+<p>下面以阿里云对应”大猩猩“，腾讯云对应”黑猩猩“，华为云与七牛云对应“猴子”为例做分析。</p>
+<h3 id="2-2-1-“大猩猩”——阿里云"><a href="#2-2-1-“大猩猩”——阿里云" class="headerlink" title="2.2.1   “大猩猩”——阿里云"></a>2.2.1   “大猩猩”——阿里云</h3><p>阿里云成立于2009年，其公有云服务上线于2011年而今已成为世界第三大公有云提供商，今天阿里云已成为“国内云计算市场占有率第二名到第五名之和”的行业巨头。[<a href="#_ftn2">1]</a> 作为当之无愧的行业榜首，阿里云以阿里的其他业务作为生动鲜活的宣传，再以其扎实的服务讲口碑进一步确立、推动着市场与行业的快速发展。“技术采纳生命周期模型”告诉我们，这样的市场格局是由实用主义消费者支持市场领导者本性所决定的，一旦实用主义消费者开始支持和购买市场领导者的产品，这个过程是一个自反馈过程，可以确保市场领导者获取它的产能所能⽀支撑的市场份额。阿里的业务也随之不断拓展，如图7所示。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image013.png" alt="img"></p>
+<blockquote>
+<p>Fig 7 The series of Alibaba Cloud’s services, captured on Jan 10th, 2020</p>
+<p>图7 阿里云的云服务产品线，图片获得于2020年1月10日</p>
+<p>图片来自阿里云官网，<a target="_blank" rel="noopener" href="https://www.aliyun.com/about/advantage?spm=5176.7920200.709611.2.3d4942909iPuyq">https://www.aliyun.com/about/advantage?spm=5176.7920200.709611.2.3d4942909iPuyq</a></p>
+</blockquote>
+<p>阿里不仅在云服务这一业态上有独到的创新之处，在其核心技术上也有所建树。无论是“双十一”中面对巨大流量时的稳定性能发挥，还是在业内率先实现“去IOE”化与自研的“飞天”云计算架构与”神龙“弹性裸金属计算，都体现着阿里在技术方面的扎实积累。</p>
+<p>更重要的是，阿里已经建设起一个完整的开发者社区与完备的文档体系，与其负责高效的工单系统、售前咨询系统相结合，可以助力不同层次的开发者快速上云，而社区的维护实际上也为阿里分担了部分工作量。许多优秀的产品使用与案例博客是阿里云的客户所写，并被阿里云所认可以致转载。而一些实用的软件工具，甚至被阿里推荐使用。实际的例子如阿里的OSS客户端。OSS(Object Storage Service)是阿里云所提供的一种海量、安全、低成本、高可靠的云存储服务。在相当长的时间里，为了让客户能更方便地管理OSS中的文件，云栖社区与云市场中出现了一批免费开源的OSS浏览器。而阿里云则选择其中优秀的给予认可并分发给用户。这样与开源社区合作共赢的方式值得学习。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image016.jpg" alt="img"></p>
+<blockquote>
+<p>Fig 8 The writer’s own OSS Browser, captured on Jan 10th, 2020</p>
+<p>图8 笔者自用的阿里云官方OSS客户端，图片获得于2020年1月10日</p>
+</blockquote>
+<p>作为业内率先走向帮助实体产业升级并布局云市场的云计算企业，面向传统产业时，阿里也以十分谦卑的态度深入其间，努力以“精通业务懂技术”的姿态让云服务为其创新赋能。阿里云所能提供的云服务已经几乎涵盖了市场的所有方面，能提供多种多样的行业解决方案乃至生态解决方案。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image017.png" alt="img"></p>
+<blockquote>
+<p>Fig 9 Alibaba Cloud’s industial cloud solutions(not all the content), captured on Jan 10th, 2020</p>
+<p>图9 阿里云所提供的行业解决方案(未展示所有内容)，图片获得于2020年1月10日</p>
+<p>图片来自阿里云官网，<a target="_blank" rel="noopener" href="https://www.aliyun.com/solution/all?spm=5176.224200.h2v3icoap.4.a9e36ed6BgZNlM&amp;aly_as=6nvfCuyA">https://www.aliyun.com/solution/all?spm=5176.224200.h2v3icoap.4.a9e36ed6BgZNlM&amp;aly_as=6nvfCuyA</a></p>
+</blockquote>
+<p>阿里在行业实践的过程中是其培育的云生态下游企业和它自身共同竞技的。阿里系创业者们也更倾向于使用阿里的产品，形成了一个良性循环。云市场的类目如今已十分繁杂，几乎覆盖所有行业，体现着阿里云的强大迁移能力。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image019.png" alt="img"></p>
+<blockquote>
+<p>Fig 10 Alibaba Cloud’s cloud market’s cloud services and products(not all the content), captured on Jan 10th, 2020</p>
+<p>图10 阿里云的云市场所提供的服务与产品(未展示所有内容)，图片获得于2020年1月10日</p>
+<p>图片来自阿里云官网，<a target="_blank" rel="noopener" href="https://market.aliyun.com/?spm=5176.13342246.h2v3icoap.5.18b63ccb4psprD&amp;aly_as=ipm0VUiQ">https://market.aliyun.com/?spm=5176.13342246.h2v3icoap.5.18b63ccb4psprD&amp;aly_as=ipm0VUiQ</a></p>
+</blockquote>
+<p>​    然而阿里云作为市场领导者也并非毫无缺点。阿里云的定价普遍偏高，特别是其境外节点的费用远超海外同类竞品；其产品门类虽特别齐全，但在单独的点与特定应用场景上，阿里无法占有绝对优势。于是就有了下面的“黑猩猩”和“猴子”生存与发展的空间。</p>
+<h3 id="2-2-2-“黑猩猩”——以腾讯云为例"><a href="#2-2-2-“黑猩猩”——以腾讯云为例" class="headerlink" title="2.2.2   “黑猩猩”——以腾讯云为例"></a>2.2.2   “黑猩猩”——以腾讯云为例</h3><p>“技术采纳生命周期”模型告诉我们，“大猩猩”再强大，也无法吃掉所有的市场。腾讯云与天翼云就是两个鲜活的例子。它们在市场中处于“黑猩猩”的地位，但它们拥有独有的优势，对待客户也更为和善，有其独特的发展空间。</p>
+<p>腾讯云的起步比阿里晚，但它也已经基本完成了云产品全链条的基本覆盖，与云市场云生态的构建——凭借着其独一无二的优势：社交软件的入口与流量优势与杀手锏：微信小程序。</p>
+<p>1、腾讯云可以在阿里云能涉及到的传统方式进行宣传，但更能在其旗下平台微信与QQ中进行宣传，其可传达性与覆盖面明显强于阿里。无论是朋友圈还是QQ空间里，只要你在相关平台上关注过信息行业，几乎都能收到腾讯云的广告，对学生而言，还有专门的学生机广告，吸引技术初探者尽快接纳腾讯云的整个体系。</p>
+<p>2、腾讯的微信小程序的开发贯彻了“云原生开发”的理念，不仅开发成本大大降低，对用户而言其易用性也大大增强。与传统的APP相比，越来越多的用户更偏好免安装的，相对而言更安全的基于HTML5的即开即用的应用。腾讯云的客户数也因此得到大幅增长。</p>
+<p>腾讯云在成长期，还常常以价格优势吸引客户。笔者自身使用着298元一年秒杀来的2核4GB广州节点云服务器，使用体验极为良好。这自然是首年的推广价格，然而使用一年后，许多客户可能在考虑到迁移成本与服务质量的情况下继续选择腾讯云，腾讯云的市场自然就打开了。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image021.png" alt="img"></p>
+<blockquote>
+<p>Fig 11 The writer’s own Tencent Cloud’s CVM (Cloud Virtual Machine), captured on Jan 10th, 2020</p>
+<p>图11 笔者自用的腾讯云服务器，图片获得于2020年1月10日</p>
+</blockquote>
+<p>2019年第三季度，腾讯云收入同比增长80%至人民币47亿元，主要由于现有客户增加使用量，以及教育、金融、民生服务及零售业等的客户基础扩大，其智慧行业解决方案亦增长迅速，尤其是智慧零售项目。腾讯发布的发布SaaS生态“千帆计划”，通过整合如云服务及企业微信等腾讯内部资源，联合外部SaaS企业，以培育更多垂直领域SaaS解决方案。随着业务规模的扩大及供应链的优化，腾讯云服务的营运效率有所提升。在可预见的将来，腾讯云仍有充沛的发展潜力。[<a href="#_ftn3">2]</a></p>
+<h3 id="2-2-3-“猴子”——以华为云与七牛云为例"><a href="#2-2-3-“猴子”——以华为云与七牛云为例" class="headerlink" title="2.2.3   “猴子”——以华为云与七牛云为例"></a>2.2.3   “猴子”——以华为云与七牛云为例</h3><p>“技术采纳生命周期”模型告诉我们，“猴子”在龙卷风暴中进入市场，不需要进行基础架构的探索与研发，不需要教育市场和客户，其最优的策略是克隆大猩猩的产品，卖便宜一些。然而实际的情况又会略微有所不同。下面以华为云与七牛云为例。</p>
+<p>华为云于2017年加入云计算市场中，其前身是华为软件部门的一部分，现归属于华为ICT业务组织下的Cloud&amp;AI产品与服务这一区域组织下，与运营商BG（Business Group）、企业BG同级。华为作为全球领先的ICT（信息与通信）基础设施和智能终端提供商，华为自身的云服务也具有鲜明的与通讯网相关的属性。然而华为的云服务绝不仅仅局限于优化通信核心网与SDN、提供NaaS等，华为同样有全方位深入云市场的野心。在成长初期，华为以其与政府与部分传统企业此前建立的良好关系推广其云计算产品，为体现自身特色，华为将“EI企业智能”与“鲲鹏”作为一大卖点，加之其自身在芯片、ASIC、人工智能等方面的深耕（如自研的服务器CPU鲲鹏920等）与价格上的优惠，既能满足“国产化”的可控性与安全性与成本控制要求，又能较好地与现有的网络通讯系统相结合。</p>
+<p> 而七牛云则选择走差异化的路线，以数据智能和视觉智能为核心的云计算产业，围绕海量数据和各行业富媒体场景推出由 CDN、对象存储、云主机、大数据，内容识别平台等系列产品组合的智能视频云，为用户提供综合全面的云计算服务。[<a href="#_ftn4">3]</a> 专做特定行业内特定的事，以发挥自身独到长处，深耕细分市场，以谋取自身的生存与发展。七牛的技术积累颇为深厚：2017 年 09 月，七牛云人工智能团队勇斩 ACMMM LSVC 竞赛亚军，视频识别能力获国际认可；2018 年 01 月，推出全自研内核跨平台多媒体播放器；2018 年 06 月，七牛云人工智能实验室荣获 ActivityNet 2018 竞赛季军。前身为“七牛云人工智能实验室”的闪马智能，便在2019全国中台战略大会上提出了“视频智能中台打造AI产品的钢筋混凝土时代”的构想。这样的企业还有很多。并不是每一个企业都需要做成大而全的巨头，做一个小而美的业内翘楚同样值得认可。</p>
+<p><img src="https://ydjsir-edu.oss-cn-shanghai.aliyuncs.com/Git-Pictures/2019-cloud-analysis/clip_image024.png" alt="img"></p>
+<blockquote>
+<p>Fig 12 The series of Qiniu Cloud’s services, captured on Jan 10th, 2020</p>
+<p>七牛云的产品线，图片获得于2020年1月10日</p>
+<p>图片来自七牛云官网，<a target="_blank" rel="noopener" href="https://www.qiniu.com/company">https://www.qiniu.com/company</a></p>
+</blockquote>
+<h1 id="3-云计算未来发展展望"><a href="#3-云计算未来发展展望" class="headerlink" title="3   云计算未来发展展望"></a><strong>3</strong>   云计算未来发展展望</h1><h2 id="3-1-“主街过后”"><a href="#3-1-“主街过后”" class="headerlink" title="3.1  “主街过后”"></a><strong>3.1</strong>  “主街过后”</h2><p>上文对华为云、腾讯云、阿里云等企业的分析表明国内云计算市场方兴未艾，正在国内外行业巨头与开源社区的合作下快速推进。既有一批又一批的先行者试图打破虚拟世界与现实世界的局限，让越来越多的行业实体成为”Data-driven Business”的智慧的数据驱动型企业，又有在传统IT企业的升级与改造中敢吃螃蟹的创新者。在云计算已经进入主街阶段，市场状况相对良好，行业空间与营收不断扩大，市场行业结构趋于稳定的情况下，云计算产业能否在下一个阶段进一步谋求市场扩张与产业发展，是我们需要关注的重要问题。云计算作为一个产品已取得巨大的成功，然而从长远来看，云计算的市场增长期过后，又会走向何方？</p>
+<p>云计算“停留在主街”的时间终将会耗尽吗？云计算也会像此前繁荣一时的小型机被微机那样被取代而被边缘化，还是像桌椅一样沿用至今未发生非连续性创新呢？以上种种迹象表明，云计算的未来更可能是后者。万物互联的时代终将到来并为更远的未来打下基础，对分布式的，高可靠性的计算架构的需求只会越来越大。云计算作为这一需求的最好解决方案之一，有无尽的发展前景，就像椅子这一让人坐的产品千年来并未被淘汰一样。况且，“技术采纳生命周期”认为主街过后市场会收缩为服务产业，然而云计算自产生那天起，就带有深深的“服务”属性。无论是IaaS，PAAS还是SaaS，”As a Service”的属性都深植其中。因此，云计算的未来是长久的、光明的、富有生机的。</p>
+<h2 id="3-2-云计算未来发展方向"><a href="#3-2-云计算未来发展方向" class="headerlink" title="3.2  云计算未来发展方向"></a><strong>3.2</strong>  云计算未来发展方向</h2><p>对于行业内部的竞争者来说，应该考虑如何避免在未来的产业变革中遭遇洗牌、失去行业发展空间，从这个角度来说，探索云计算市场未来发展方向就显得极为重要。经过分析，我们认为云计算在下一阶段想取得突破性发展，遵从下面几个方向前进可能性较大。</p>
+<h3 id="3-2-1-提升SaaS服务的深度和广度，深化用户层级分析，推出更加切合市场需求的产品"><a href="#3-2-1-提升SaaS服务的深度和广度，深化用户层级分析，推出更加切合市场需求的产品" class="headerlink" title="3.2.1   提升SaaS服务的深度和广度，深化用户层级分析，推出更加切合市场需求的产品"></a>3.2.1   提升SaaS服务的深度和广度，深化用户层级分析，推出更加切合市场需求的产品</h3><p>长江证券2019年发表的海外云计算巨头财报综述显示，在过去一段时间以来SaaS层的业务进展顺利，财务指标良好，有一定的营收增长，并且近年来增速明显，微软Office业务、Adobe的Creative Cloud以及用友网络的企业云服务产品表现都比较好 [<a href="#_ftn5">4]</a>，这体现SaaS作为云服务的一种形态是可持续的。并且，SaaS在用户群体上的广度在客观上是要大于IaaS的，因为客户使用基础设施云产品的动因便是搭建服务，实际上传统企业中还广泛存在着有上云需求但因为技术受限，上云需求被搁置的情况，这部分传统行业潜在用户的规模也是相当庞大的。</p>
+<p>个人用户同样也有类似的需求。所以在SaaS层面取得突破的可能性较大。但不可忽略的是，当前SaaS发展还面临着一定的问题。首先，产品的用户群体不够广泛，国内现有的云产品针对大企业专业用户的比较多，受限于价格因素，小微企业不便于使用，针对于个人用户使用的云服务功能与盈利模式也比较单一；其次，产品细分程度不够，针对性不强，经常出现一个独立产品包罗万象，实际学习难度非常大，同时这些产品往往对某些需求的适配性不够好，云产品接入实际需求的开销比较大，成为了用户接入云服务的障碍。SaaS的增长点在于拓展应用的广度和深度，使之更加智能化，更加轻便易用，适应更多用户的需求。在实际操作中，这一目的可以通过模块化方法或者灵活API接入的方法来实现。同时，在良好产品的基础上注重盈利模式的探索，在应用推广中体现产品价值，是SaaS取得进一步发展的基础。需要注意的是，虽然SaaS是未来云服务发展的一个重要方向，但其产品特性决定了其增长不会是一蹴而就的，在充分的市场调研与用户分析中建设SaaS产品必将是一个长期的过程。</p>
+<h3 id="3-2-2-使IaaS基础设施更加稳固健壮，并与上层应用深度融合"><a href="#3-2-2-使IaaS基础设施更加稳固健壮，并与上层应用深度融合" class="headerlink" title="3.2.2   使IaaS基础设施更加稳固健壮，并与上层应用深度融合"></a>3.2.2   使IaaS基础设施更加稳固健壮，并与上层应用深度融合</h3><p>根据现有的市场状况来看，在SaaS没有来到爆发式增长点之前，IaaS在很长一段时间内仍将占有较大的市场份额。从许多云服务公司的财报中可以看到当前IaaS层的盈利仍占较大比例，对于公司总营收拉动是比较明显的。云服务基础设施的市场需求是稳定存在的，并且还在不断上升，另一方面基础运算设备的价格下降也为基础设施提供商带来了红利。当前IaaS进一步发展的方向在于提供更加专业化的产品。比如：AI产业的爆发对运算设备的算力提出了极高的要求，吸引AI用户选用云服务产品的动力便在于用更低的成本提供更高的算力，针对这一特定需求云服务基础设施厂商可以在运算设备的原理上进行改进，针对AI运算的高算力要求选用更加适应需求的芯片，降低成本。[<a href="#_ftn6">5]</a> 同理，针对运算量需求较少的用户，则可以采用运算资源共享的方法降低成本提高效率。</p>
+<p>同时，在基础设施运行维护方面也要做出投入。部分有特殊需求的用户不上云的原因是担心云服务设施不能满足高隐私安全性或高网络连通性的要求。对此，云服务提供商可以采取更强的隐私安全政策或者信息加密技术；采取更高强度的网络安全策略、制定有效的应急措施、接入良好的网络攻击防范技术，保证网路通畅；对用户数据采取一定的备份策略，保证数据安全；接入备份网络线路，保证网络连通性。（针对安全性提升，还有其他手段，甚至是未被广泛运用的新技术，此处不再举例）从这一方面进行发力，能够有效降低用户因安全性维护所带来的隐形成本，提高用户的信任度。提升IaaS服务的专业性，是在发展过程中取得竞争优势的重要手段。</p>
+<h3 id="3-2-3-基础设施应提早布局，以应对超大流量"><a href="#3-2-3-基础设施应提早布局，以应对超大流量" class="headerlink" title="3.2.3   基础设施应提早布局，以应对超大流量"></a>3.2.3   基础设施应提早布局，以应对超大流量</h3><p>​    5G基础设施网络建设的迅速推进，是云计算行业迎来的下一个机遇。5G超大带宽、信息容量大、速率高、入网用户数众多的特性决定了自建网络设施进行服务代价是非常大的，而云计算可以利用其规模大的优势介入服务，降低平均成本。想要充分利用5G技术的优势，对云服务背后连接的网络系统进行大规模升级是不可避免的，尤其是针对云服务本来就比较大的流量与瞬时流量速率，再进行改造就更加困难，等5G真正的全面铺开再进行升级显然是不现实的，提早做出改变才是更加明智的选择。并且，这里的改造不仅是物理层的改造，软件也要做出相应的变化，以应对同一时段大量数据的快速处理。与5G高速率多用户场景比较类似的是诸如电商系统或者抢票系统的高并发应对设计，在这些方面技术难度是比较大的，而这样的系统对于业务安全又比较重要。针对这样的场景，采取分布式架构是现在比较常见的做法。云服务厂商同样可以凭借自身技术优势，从云端的思维入手提出更加合理的解决方案，在这些方面设计对应的服务产品，提供给中小型用户使用。针对IoT设备的服务，云服务厂商亦可以采取同样的思路，推荐物联设备厂商将IoT设备的算力部署到云端，在云端对运算服务进行针对性的优化，从而降低设备的生产成本，提升服务质量与服务能力。针对新技术的广泛运用，云服务厂商及时布局是极有必要的。</p>
+<h2 id="3-3-云计算未来发展潜力"><a href="#3-3-云计算未来发展潜力" class="headerlink" title="3.3  云计算未来发展潜力"></a><strong>3.3</strong>  云计算未来发展潜力</h2><p>在当下的时间节点看来，云计算还有很大的发展空间，中期内仍将处于高速发展状态。从市场角度来看待，云计算还有庞大的用户群体未被发掘出来，对于传统行业和小微企业的网络服务，云计算有着巨大的优势，而这部分用户群体还没有得到充分的挖掘。从政策角度来看待，由于互联网+对经济具有巨大的带动性，具有强大的2C（To Consumer）能力，能够在传统行业转型升级过程中发挥巨大作用，互联网浪潮带给云计算的发展红利在短期内不会消失，市场对云计算能力的需求还会维持。从技术优势角度来看，云计算的高可靠性、易用性、通用性、可拓展性与廉价性[5] 相对传统的自行建设网络环境具有比较明显的优势，并且在过去的一段时间中云计算服务提供商的技术实力也不断提升，产品分类也趋于细化，能够适应大多数上云用户的需求。从这几个角度来看，云计算产业的发展前景较好，可以对其持乐观态度。</p>
+<p>References:</p>
+<p>  [1]  Ziming Xu, Yangfeng Tian. Cloud Computing’s History of Development and Application[J], Information Record Material, 2018:66-67.</p>
+<p>  [2]  Awodele Oludele, Emmanuel C. Ogu, Kuyoro ‘Shade, Umezuruike Chinecherem. On the Evolution of Virtualization and Cloud Computing: A Review. Journal of Computer Sciences and Applications. 2014; 2(3):40-43. doi: 10.12691/jcsa-2-3-1. Hall T, Beecham S, Bowes D, Gray D, Counsell S. A systematic literature review on fault prediction performance in software engineering. IEEE Trans. on Software Engineering, 2012,38(6):1276-1304.</p>
+<p>  [3]  Hanguang Li. Introduction to Virtualization Technology and Practices of Virtual Environment[J], Digital Technology and Application, 2010(4):79-81.</p>
+<p>  [4]  CAICT(China Academy of Information and Communications Technology).The White Paper of Cloud Computing’s Development(2019).</p>
+<p>  [5]  Haozhan Tian, Cloud Computing and Advantage Analysis, Discovering Value,(2014),47-47</p>
+<p>附中文参考文献:</p>
+<p>[1]  许子明,田杨锋.云计算的发展历史及其应用[J]. 信息记录材料,2018:66-67</p>
+<p>[3] 黎寒光. 虚拟化技术介绍及虚拟应用环境实践[J]. 数字技术与应用, 2010(4):79-81.</p>
+<p>[4] 中国信息通信研究院.云计算发展白皮书(2019),2019</p>
+<p>[5] 田浩展. 云计算及其优势浅析. 中国电子商务,2014(3), 47-47.</p>
+<hr>
+<p>[<a href="#_ftnref2">1]</a> 阿里云官网介绍，<a target="_blank" rel="noopener" href="https://www.aliyun.com/about?spm=5176.128803.709608.1.4f9f6adceWemav">https://www.aliyun.com/about?spm=5176.128803.709608.1.4f9f6adceWemav</a></p>
+<p>[<a href="#_ftnref3">2]</a> 腾讯2019Q3业绩报告,2019:5-6.</p>
+<p>[<a href="#_ftnref4">3]</a> 七牛云官网，<a target="_blank" rel="noopener" href="https://www.qiniu.com/company">https://www.qiniu.com/company</a></p>
+<p>[<a href="#_ftnref5">4]</a> 长江证券.(2019).海外云计算巨头财报综述</p>
+<p>[<a href="#_ftnref6">5]</a> 长江证券.(2018).信息技术行业：如何看待云计算给服务器行业带来的边际影响？</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">YDJSIR</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://ydjsir.com.cn/2020/04/05/2019-cloud-analysis/">https://ydjsir.com.cn/2020/04/05/2019-cloud-analysis/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ydjsir.com.cn" target="_blank">南雍随笔</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Cloud/">Cloud</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f0583da1a05b538" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/04/27/BasicViews/"><img class="prev-cover" src="https://oss.ydjsir.com.cn/GitPages/BasicViews/YDJSIR%E7%9A%84%E6%96%87%E5%8C%96%E7%BB%93%E6%9E%84.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">YDJSIR的基本立场</div></div></a></div><div class="next-post pull-right"><a href="/2020/04/01/CitiesSkylines/"><img class="next-cover" src="https://oss.ydjsir.com.cn/GitPages/CSL/YDJSIR-cover.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CSL：城市，让生活更美好</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">YDJSIR</div><div class="author-info__description">YDJSIR的网站</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/YDJSIR-EDU"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/YDJSIR-NJU" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ydjsirhere@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">YDJSIR争取每月更新……</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%BF%90%E7%94%A8%E2%80%9C%E6%8A%80%E6%9C%AF%E9%87%87%E7%BA%B3%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%A8%A1%E5%9E%8B%E2%80%9D%E5%AF%B9%E4%BA%91%E8%AE%A1%E7%AE%97%E5%8E%86%E5%8F%B2%E7%9A%84%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1   运用“技术采纳生命周期模型”对云计算历史的分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%85%88%E5%A3%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1.1  先声</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%97%A9%E6%9C%9F%E5%B8%82%E5%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">1.2  早期市场</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%B8%BF%E6%B2%9F%E4%B8%8E%E4%BF%9D%E9%BE%84%E7%90%83%E9%81%93"><span class="toc-number">1.3.</span> <span class="toc-text">1.3  鸿沟与保龄球道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%E9%BE%99%E5%8D%B7%E9%A3%8E%E6%9A%B4"><span class="toc-number">1.4.</span> <span class="toc-text">1.4  龙卷风暴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-%E4%B8%BB%E8%A1%97"><span class="toc-number">1.5.</span> <span class="toc-text">1.5  主街</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%BB%E8%A1%97%E2%80%94%E2%80%94%E5%9B%BD%E5%86%85%E4%BA%91%E8%AE%A1%E7%AE%97%E5%B8%82%E5%9C%BA%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2   主街——国内云计算市场分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%80%BB%E4%BD%93%E6%A6%82%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">2.1  总体概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E2%80%9C%E4%B8%BB%E8%A1%97%E2%80%9D%E4%B8%8A%E7%9A%84%E5%9B%BD%E5%86%85%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%87%A0%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">2.2  “主街”上的国内云服务几例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E2%80%9C%E5%A4%A7%E7%8C%A9%E7%8C%A9%E2%80%9D%E2%80%94%E2%80%94%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1   “大猩猩”——阿里云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E2%80%9C%E9%BB%91%E7%8C%A9%E7%8C%A9%E2%80%9D%E2%80%94%E2%80%94%E4%BB%A5%E8%85%BE%E8%AE%AF%E4%BA%91%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2   “黑猩猩”——以腾讯云为例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E2%80%9C%E7%8C%B4%E5%AD%90%E2%80%9D%E2%80%94%E2%80%94%E4%BB%A5%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%8E%E4%B8%83%E7%89%9B%E4%BA%91%E4%B8%BA%E4%BE%8B"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3   “猴子”——以华为云与七牛云为例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BA%91%E8%AE%A1%E7%AE%97%E6%9C%AA%E6%9D%A5%E5%8F%91%E5%B1%95%E5%B1%95%E6%9C%9B"><span class="toc-number">3.</span> <span class="toc-text">3   云计算未来发展展望</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E2%80%9C%E4%B8%BB%E8%A1%97%E8%BF%87%E5%90%8E%E2%80%9D"><span class="toc-number">3.1.</span> <span class="toc-text">3.1  “主街过后”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BA%91%E8%AE%A1%E7%AE%97%E6%9C%AA%E6%9D%A5%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91"><span class="toc-number">3.2.</span> <span class="toc-text">3.2  云计算未来发展方向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E6%8F%90%E5%8D%87SaaS%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%EF%BC%8C%E6%B7%B1%E5%8C%96%E7%94%A8%E6%88%B7%E5%B1%82%E7%BA%A7%E5%88%86%E6%9E%90%EF%BC%8C%E6%8E%A8%E5%87%BA%E6%9B%B4%E5%8A%A0%E5%88%87%E5%90%88%E5%B8%82%E5%9C%BA%E9%9C%80%E6%B1%82%E7%9A%84%E4%BA%A7%E5%93%81"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1   提升SaaS服务的深度和广度，深化用户层级分析，推出更加切合市场需求的产品</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E4%BD%BFIaaS%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E6%9B%B4%E5%8A%A0%E7%A8%B3%E5%9B%BA%E5%81%A5%E5%A3%AE%EF%BC%8C%E5%B9%B6%E4%B8%8E%E4%B8%8A%E5%B1%82%E5%BA%94%E7%94%A8%E6%B7%B1%E5%BA%A6%E8%9E%8D%E5%90%88"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2   使IaaS基础设施更加稳固健壮，并与上层应用深度融合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E5%BA%94%E6%8F%90%E6%97%A9%E5%B8%83%E5%B1%80%EF%BC%8C%E4%BB%A5%E5%BA%94%E5%AF%B9%E8%B6%85%E5%A4%A7%E6%B5%81%E9%87%8F"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3   基础设施应提早布局，以应对超大流量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%BA%91%E8%AE%A1%E7%AE%97%E6%9C%AA%E6%9D%A5%E5%8F%91%E5%B1%95%E6%BD%9C%E5%8A%9B"><span class="toc-number">3.3.</span> <span class="toc-text">3.3  云计算未来发展潜力</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/10/28/theGirlInTheDreamOfYDJSIR/" title="The Girl In The Dream Of YDJSIR"><img src="https://oss.ydjsir.com.cn/GitPages/schools/ZSJZskirt.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="The Girl In The Dream Of YDJSIR"/></a><div class="content"><a class="title" href="/2020/10/28/theGirlInTheDreamOfYDJSIR/" title="The Girl In The Dream Of YDJSIR">The Girl In The Dream Of YDJSIR</a><time datetime="2020-10-28T11:59:13.000Z" title="发表于 2020-10-28 19:59:13">2020-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/05/productSelection/" title="审视硬件产品选购"><img src="https://oss.ydjsir.com.cn/GitPages/productSelection/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="审视硬件产品选购"/></a><div class="content"><a class="title" href="/2020/10/05/productSelection/" title="审视硬件产品选购">审视硬件产品选购</a><time datetime="2020-10-05T08:48:56.000Z" title="发表于 2020-10-05 16:48:56">2020-10-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/15/EduIPv6-OpenWRT/" title="科学与IPv6兼得的OpenWRT"><img src="https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/OpenWRT-Cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="科学与IPv6兼得的OpenWRT"/></a><div class="content"><a class="title" href="/2020/09/15/EduIPv6-OpenWRT/" title="科学与IPv6兼得的OpenWRT">科学与IPv6兼得的OpenWRT</a><time datetime="2020-09-15T12:53:48.000Z" title="发表于 2020-09-15 20:53:48">2020-09-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/25/MSCKICKOFF-2020-Review/" title="MSC-KICKOFF-2020-Review"><img src="https://oss.ydjsir.com.cn/GitPages/MSC-KICKOFF/MSC-KICKOFF-.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MSC-KICKOFF-2020-Review"/></a><div class="content"><a class="title" href="/2020/08/25/MSCKICKOFF-2020-Review/" title="MSC-KICKOFF-2020-Review">MSC-KICKOFF-2020-Review</a><time datetime="2020-08-25T01:24:02.000Z" title="发表于 2020-08-25 09:24:02">2020-08-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/08/24/2020SumNJUSocialResearch/" title="高素质人口流动与地区经济发展之关系的研究"><img src="https://oss.ydjsir.com.cn/GitPages/2020SumNJUSocialResearch/JM-1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高素质人口流动与地区经济发展之关系的研究"/></a><div class="content"><a class="title" href="/2020/08/24/2020SumNJUSocialResearch/" title="高素质人口流动与地区经济发展之关系的研究">高素质人口流动与地区经济发展之关系的研究</a><time datetime="2020-08-24T07:14:54.000Z" title="发表于 2020-08-24 15:14:54">2020-08-24</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By YDJSIR</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">本站正體中文內容系前端插件自動生成</div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn"><span>粤ICP备20028390号-1</span></a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302320916"><img class="icp-icon" src="/img/icp.png" alt="icon"/><span>苏公网安备 32011302320916号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/algolia.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>
