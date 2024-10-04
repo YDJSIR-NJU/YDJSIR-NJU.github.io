@@ -1,0 +1,446 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Well Exercised GPUs Come Roaring Back | YDJSIR</title><meta name="keywords" content="Garbage"><meta name="author" content="YDJSIR"><meta name="copyright" content="YDJSIR"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="NvidiaAs we all know, a large number of GPUs were sent to the “gym” for exercise (crypto currency mining) some time ago. During this period, the price of graphics cards can be said to have risen. As t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Well Exercised GPUs Come Roaring Back">
+<meta property="og:url" content="https://ydj.abn-team.top/2022/11/05/CMPGPU/index.html">
+<meta property="og:site_name" content="YDJSIR">
+<meta property="og:description" content="NvidiaAs we all know, a large number of GPUs were sent to the “gym” for exercise (crypto currency mining) some time ago. During this period, the price of graphics cards can be said to have risen. As t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://oss.ydjsir.com.cn/GitPages/X79andP106/cover.png">
+<meta property="article:published_time" content="2022-11-05T15:48:39.000Z">
+<meta property="article:modified_time" content="2024-10-04T08:27:31.337Z">
+<meta property="article:author" content="YDJSIR">
+<meta property="article:tag" content="Garbage">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oss.ydjsir.com.cn/GitPages/X79andP106/cover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ydj.abn-team.top/2022/11/05/CMPGPU/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin="crossorigin"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//zz.bdstatic.com"/><meta name="baidu-site-verification" content="uFBXMIeWh3"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0e07e5c4aa664fe94520a0bde83524ac";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-165586204-2"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-165586204-2');
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-04 16:27:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Projects</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE-Collection</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ydjsir.com.cn/"><span> 中文</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://oss.ydjsir.com.cn/GitPages/X79andP106/header.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">YDJSIR</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Projects</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/UPAE/"><i class="fa-fw fas fa-building"></i><span> UPAE</span></a></li><li><a class="site-page" target="_blank" rel="noopener" href="https://github.com/NJU-SE-15-share-review/professional-class"><i class="fa-fw fas fa-archive"></i><span> NJUSE-Collection</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ydjsir.com.cn/"><span> 中文</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">Well Exercised GPUs Come Roaring Back</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-11-05T15:48:39.000Z" title="Created 2022-11-05 23:48:39">2022-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-10-04T08:27:31.337Z" title="Updated 2024-10-04 16:27:31">2024-10-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/">Tech</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Tech/Hardware/">Hardware</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>23min</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Nvidia"><a href="#Nvidia" class="headerlink" title="Nvidia"></a>Nvidia</h1><p>As we all know, a large number of GPUs were sent to the “gym” for exercise (crypto currency mining) some time ago. During this period, the price of graphics cards can be said to have risen. As the tide ebbs, the price of GPUs begins to plummet, but it seems that there is still a force that is strongly pushing the price to the bottom. YDJSIR will obviously also get some retired graphics cards from the gym to compare when the tide is low.</p>
+<p>As the DAG size increases, batch after batch of cards are left without a workout and must step down. Of course, the cards that are actually disabled here do not just include those that have been disabled by workouts. AI computing is actually also very destructive to graphics cards, right? It’s just that the working environment of those graphics cards is slightly better and more stable after all. Therefore, professional computing cards (second-hand) are also covered in this article. Newly purchased graphics cards are not considered in this article.</p>
+<h2 id="Nvidia-RTX-2080Ti-Huaqiang-North-powered-water-cooling-with-22G-VRAM"><a href="#Nvidia-RTX-2080Ti-Huaqiang-North-powered-water-cooling-with-22G-VRAM" class="headerlink" title="Nvidia RTX 2080Ti (Huaqiang North powered water cooling, with 22G VRAM)"></a>Nvidia RTX 2080Ti (Huaqiang North powered water cooling, with 22G VRAM)</h2><p>YDJSIR has been torn between wanting to buy a graphics card for a long time. After spending a substantive fortune on the AMD Ryzen R9-5950X and the Asus TUF X570-PLUS WIFI, the originally scheduled purchase of the 4060Ti 16G and 3080Ti 20G obviously fell through. However, there is no turning back once the decision has been made, so we must persevere to the end. During this period, YDJSIR also considered the RTX 5000M 16G magic modification plan (1600, which is said to be the official version of the core), but the seller even said that the price YDJSIR got was still second-hand goods, and YDJSIR was dissatisfied. In the end, YDJSIR chose the simplest and most straightforward solution: 2080Ti 22G. On Xianyu (闲鱼), there was just an old guy selling a water-cooled 2080Ti for a low price of 2400, so YDJSIR of course rushed to buy it immediately. The seller said that he had been refining the card for half a year, until he replaced it with a 3090. As for the one before that? Who knows where it came from. Regardless of whether it was previously used to mine artificial intelligence in a dust-free computer room or some kind of coin in an inexplicable rendering farm, as long as it works in my hands, it’s fine.</p>
+<p>When YDJSIR got it, YDJSIR could really tell that it was full of the aura of alchemy. There was too much dust… The mounting was modified really well, with four screws on the diagonal, but it wasn’t unusable in the end. YDJSIR was slightly worried when the back panel screws were loose. The bezel was not provided by the seller, and YDJSIR had to search for a long time before finding the right screws.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20231026105119823.png" alt="image-20231026105119823"></p>
+<p>Obviously, screw holes are reserved for the latter half of the graphics card, but the seller felt that the memory and hot spots would only reach a maximum of 88°C anyway, so he didn’t bother installing it. YDJSIR really doesn’t understand this behavior, but there are indeed missing screws, and YDJSIR really doesn’t want to disassemble this set of fasteners, so let’s just leave it at that. The bottom fan is far away, so the problem should not be too big. During the installation of the graphics card, the water cooling tube was not long enough, so the fan could only be installed between the case and the cold row, which was very difficult to stretch. Because this motherboard happens to be the second main PCIe x16 slot… The power supply is the ROG-THOR-850P. There are indeed ROG parts in this case, and YDJSIR’s first installation is more in line with the label description. TUF can barely be considered a small ROG, right?</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20231026110116829.png" alt="image-20231026110116829"></p>
+<p>A dual-grill (both CPU and GPU) set is used. The chassis is a JONSBO D41, with a Scythe 12015 fan added to the front, and the bottom is the same as the rear, using a 12025 fan removed from the EK AIO BASIC 240 water cooling. The CPU heatsink is a Thermalright PA120, rather than a PA120SE. The water cooling for the graphics card is from Coolermaster, model unknown. The room temperature is 16°C. The side panels of the case are closed and placed in the position of the dormitory computer, with about one or two spaces between the front, back, left and right of the case. The JONSBO D41 case is really nice to look at!</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20231026110434023.png" alt="image-20231026110434023"></p>
+<p>The following data was obtained after two hours of baking. 160W CPU + 250W GPU, not bad at all. Water cooling suppresses the performance of the graphics card and makes it extremely stable. When the ambient temperature rises, it will be difficult for the fan to work hard no matter how hard it tries. If this continues, you can really bake your legs.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20231026105853587.png" alt="image-20231026105853587"></p>
+<p>Results from GPU-Z come as follows.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20231026110619476.png" alt="image-20231026110619476"></p>
+<p>However, it finally got broken within 1 year. YDJSIR sadly sold it.</p>
+<h2 id="Nvidia-Tesla-M4-Founders-Edition-with-modified-fans-with-4GB-VRAM"><a href="#Nvidia-Tesla-M4-Founders-Edition-with-modified-fans-with-4GB-VRAM" class="headerlink" title="Nvidia Tesla M4 (Founders Edition with modified fans, with 4GB VRAM)"></a>Nvidia Tesla M4 (Founders Edition with modified fans, with 4GB VRAM)</h2><p>You can’t lose if you spend 200 RMB! Only 200 RMB! Free shipping by SF Express!</p>
+<p>YDJSIR modified the cooling. Yes, it’s a fixed-speed fan with only positive and negative poles, blowing in one direction.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230326210626267.png" alt="image-20230326210626267"></p>
+<p>For the PCIE 3.0 x4 channel, the dual small fans at 6000 rpm can reach 65W under full load, pushing the temperature up to 67°C (the room temperature is about 18°C). FurMark runs normally, but the performance is still too low. Just think of it as pure CUDA. There is essentially no difference from the integrated graphics…at most, it is doubled, with independent video memory. It is also possible that the 8G memory graphics card simply cannot run at all?</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230326210826368.png" alt="image-20230326210826368"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230326210849935.png" alt="image-20230326210849935"></p>
+<p>Benchmark results can be retrieved here.</p>
+<p><a target="_blank" rel="noopener" href="https://oss.ydjsir.com.cn/GitPages/X79andP106/tsresult-m4.3dmark-result">https://oss.ydjsir.com.cn/GitPages/X79andP106/tsresult-m4.3dmark-result</a></p>
+<p>Follow-up: YDJSIR sold this card for 130 RMB with SF Express shipping included. The buyer seems to be a researcher at the Institute of Geographic Sciences and Natural Resources Research of the Chinese Academy of Sciences. He said he wanted to use the graphics card to edit videos of simulation software. YDJSIR couldn’t figure out what use this broken card could be. But since he said it would work, it must work.</p>
+<p>Later, YDJSIR also sold him another Samsung PM953 960GB SSD at the price 168 RMB.</p>
+<h2 id="Nvidia-Tesla-K20-Huaqiang-North-powered-modification-to-Titan-with-5GB-VRAM"><a href="#Nvidia-Tesla-K20-Huaqiang-North-powered-modification-to-Titan-with-5GB-VRAM" class="headerlink" title="Nvidia Tesla K20 (Huaqiang North powered modification to Titan, with 5GB VRAM)"></a>Nvidia Tesla K20 (Huaqiang North powered modification to Titan, with 5GB VRAM)</h2><p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230326211316656.png" alt="image-20230326211316656"></p>
+<p>At a price of 233.33 RMB, if you want performance, you can’t go wrong with the AMD RX580 8G. The AMD RX580 8G is probably the GPU with the biggest price difference between cards. After all, this thing is obviously ridiculous. But this is the Titan of modding! The price of the original Titan tripled. Thanks to the cocoon, YDJSIR’ve played with the public version of Titan leather anyway. Experience the performance of the 1065.This also belongs to YDJSIR’s cracky series of installations, which belongs to the “not unusable” series. After this thing is used with a laptop U, there is nothing serious about the whole machine.</p>
+<p>In the end, this thing doesn’t light up. This stupid case messed up the PCIE slot a bit, and it’s a collector’s item +1.</p>
+<h2 id="Nvidia-Tesla-P40-Founders-Edition-with-turbo-fans-attached-outside-with-24GB-VRAM"><a href="#Nvidia-Tesla-P40-Founders-Edition-with-turbo-fans-attached-outside-with-24GB-VRAM" class="headerlink" title="Nvidia Tesla P40  (Founders Edition with turbo fans attached outside, with 24GB VRAM)"></a>Nvidia Tesla P40  (Founders Edition with turbo fans attached outside, with 24GB VRAM)</h2><p>Except for the lack of half-precision support, the AI computing power is the same as the 3060 12G, but the video memory is doubled, and it’s cheap! Cheap! Cheap!</p>
+<p>There are probably some problems with the QVYE’s UHD750 (Engineering Sample of Intel Core i9-11900), so YDJSIR had to use it together with the K620 GPU in Grid mode, referencing <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44503976/article/details/127942918">https://blog.csdn.net/weixin_44503976/article/details/127942918</a> . YDJSIR did not overclock the card but used the default settings and an output card like the K620, which does indeed have a lot of latency and is not friendly to high resolutions. If only YDJSIR had used a QV1K or a QVYE with better quality. YDJSIR is very quiet with its centrifugal turbo cooling, with a full load below 75℃ and an indoor temperature of around 18℃.</p>
+<h2 id="Nvidia-Tesla-M40-Founders-Edition-with-modified-fans-with-12GB-VRAM"><a href="#Nvidia-Tesla-M40-Founders-Edition-with-modified-fans-with-12GB-VRAM" class="headerlink" title="Nvidia Tesla M40  (Founders Edition with modified fans , with 12GB VRAM)"></a>Nvidia Tesla M40  (Founders Edition with modified fans , with 12GB VRAM)</h2><p>In the 50HX group, watching group members tossing and turning with the X99 and P40 24G scared YDJSIR so much that he didn’t dare to get the picky 24G version, but instead bought the improved M40 12G. It uses a 1080Ti cooler from XFX with dual fans, which is very quiet. It’s really not noisy even when it’s fully loaded with 200W. YDJSIR bought it from Xianyu (闲鱼), so let’s just use the seller’s picture as a placeholder.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230307000320505.png" alt="image-20230307000320505"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230304095404360.png" alt="image-20230304095404360"></p>
+<p>To be honest, YDJSIR didn’t know that such a legacy GPU could even support Resizable BAR… But YDJSIR didn’t expect much from it anyway.</p>
+<p>At this point, YDJSIR had to complain about the outrageous Gigabyte Z490UD. As a Z-board, it doesn’t have a Type-C port. There’s no 4K60 output (only one HDMI, up to 4K30). These are all minor issues that can be tolerated for the time being. YDJSIR updated to the latest version (F21) BIOS and found that the BIOS option for selecting which port to output video from has disappeared. As a result, even if YDJSIR wants to give up 4K60 and output to the M40 rendering core display, the result will be that the core display driver will immediately turn black as soon as it is turned on. YDJSIR have cleared the CMOS countless times, after all, this thing has been bricked more than once. It doesn’t work! It doesn’t work! It doesn’t work!</p>
+<p>Below is a screenshot from the manual.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306223321225.png" alt="image-20230306223321225"></p>
+<p>Here’s an image after clearing CMOS.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306223346862.png" alt="image-20230306223346862"></p>
+<p>In fact, there are indeed some minor problems with QVYE’s UHD750. For example, inexplicable problems such as the North Bridge dropping the frequency of high-frequency memory when the UHD750 is active. But it’s not unusable. Since there are other solutions, it’s better to turn off the iGPU. Okay, the iGPU is disabled, and let’s use the AMD Catalyst card to output. That’s right, YDJSIR is talking about YDJSIR’s Fatcat 56 Although this method is indeed good if you only want to use the graphics card to run CUDA, it may indeed lack a bit of graphics rendering power and is not very suitable for playing games. YDJSIR has been here for so long. YDJSIR tried to imitate the following method, which can achieve coexistence of the AMD Catalyst and the special “professional” cards of the P10X series, to render games, but it seems to have not worked. For example, in the step where the black card is disabled in the device manager, YDJSR is directly trapped in a dark state and unable to extricate itself. This is a loss. Although it was unsuccessful, the tutorial is still included below for reference.</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Nd4y1277n/">https://www.bilibili.com/video/BV1Nd4y1277n/</a></p>
+<p>Undaunted, YDJSIR finally decided to spend a fortune and spent almost 200 RMB to buy an Nvidia Quadro K620 that is recognized as being useful in this scenario. The K420 is a lost cause anyway, and he has both DP and DVI, which should theoretically be just as useful, but for some reason no one recommended it. Why didn’t YDJSIR use a gaming card to modify the same drive solution?</p>
+<blockquote>
+<p>Thanks to the superb compatibility left by Nvidia under the T4 driver, using the game driver may make the recording function work much better, and it also provides better support for some new games. It seems that the famous big guy in the “图拉丁吧” still needs to make a Tesla, a special “professional” card, a mobile magic modification card, and a normal game card, and even a magical driver that allows specific professional cards to coexist across architectures.</p>
+</blockquote>
+<p>Gaming card solutions require at least an Nvidia gaming GPU better or equal to GTX1050 to work well (however, YDJSIR found out that he was being naïve, as it is not impossible to modify a card. In fact, the idea behind these solutions is often to use a large amount of video memory specifically for AI applications. Just the new features alone would justify using a new modified card. After all, new things are new things. Even if it is a 2060M, it is not weaker than a P40 1080Ti, and it also eliminates the latency caused by split rendering and output. But no matter what, the cost of these magic modification cards is not low, which goes against YDJSIR’s idea of entrusting the main force to the M40. So just buy the amazing K620. For a detailed tutorial, see the one below. YDJSIR used the solution of installing the Quadro driver and then modifying the driver. The rest of the modifications to the registry and high-performance settings are exactly the same as described in the video. After all, the version of the driver obtained in this way will be higher.</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d3411a7x8/">https://www.bilibili.com/video/BV1d3411a7x8/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1c24y1m7eH/">https://www.bilibili.com/video/BV1c24y1m7eH/</a></p>
+<p>In fact, the K600 costs almost half as much, even though it is only a year older, and the performance gap between the two cards is not that big except for the VRAM. But the price of the K620 has almost doubled. The reason? The K600 only has 1GB of video memory, which is probably not enough even for output. YDJSIR In actual use, even the K620’s video memory occupies more than 1GB on a daily basis. There are always some applications that definitely use the output card.</p>
+<p>Let’s take a look at 3D Mark. Compare it to the 10700K+ almighty 1060Ti. YDJSIR’s solution uses DX12 to outperform the latter (the graphics card part), but it can’t beat it under DX11. What’s going on? Theoretically, the 980Ti should actually be able to compete with the 1660.</p>
+<p>What YDJSIR didn’t expect was that the ancient M40 actually performed better in Time Spy, a DX12 test. What’s going on?</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306234729153.png" alt="image-20230306234729153"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306234111524.png" alt="image-20230306234111524"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306234612046.png" alt="image-20230306234612046"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306234914879.png" alt="image-20230306234914879"></p>
+<p>In terms of usage, it is no differencies between AI or gaming applications. Horizon 4, high-definition graphics locked at 60 frames is no problem. Horizon 5, medium-definition graphics locked at 60 is also fine. It’s not like you can’t play it anyway. The resolution is 1080p. YDJSIR gives M40 PCIE 3.0x16, but K600 gives PCIE 3.0x4, and as we all know, K600 only supports PCIE 2.0. After this wave, in fact, its bandwidth is very limited , leaving only PCIE2.0x4, which is a huge disadvantage for high resolution. Although the YDJSR has a 4K60 screen, it is not unusable when scaled to 1080P, right? A 27-inch 1080P is indeed a bit too big. Running the PCIE speed test in 3DMark, YDJSIR burst out laughing. One moment it was 40GB/s, the next it was 6GB/s. The speed difference between the two cards was too great, the ghosting was extremely bad, and the screen frame rate was also fluctuating, making it basically unusable.</p>
+<p>However, when it comes to VR, this problem has been extremely well solved. YDJSIR can be used to push Quest1 without any pressure. After all, when it comes to VR, just let the M40 do the background calculation, and you don’t need to consider the feelings of the K620 at all. This is a win.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306235106743.png" alt="image-20230306235106743"></p>
+<p>As for AI applications? Just like that, after so many tests on Bilibili, YDJSIR doesn’t want to test it. The 12G version and the 24G version only differ in capacity, and in this regard, they are still more widely applicable than most game cards on the market. Slow, but not unusable. YDJSIR has not yet tried a model that cannot run 12G. This perception is not strong, but it increases power consumption. However, with the development of SD, 24G will probably also become a necessity.</p>
+<p>So what’s the performance of the K620? Who cares about the K620? The K620 is still a good GPU card that can handle UHD content. The UHD 770 can’t even handle it, so what’s there to say?</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20230306233826298.png" alt="image-20230306233826298"></p>
+<h2 id="Nvidia-CMP-50HX-（MSI-turbo-fan-card-at-dual-PCIE-slots-with-10GB-VRAM）"><a href="#Nvidia-CMP-50HX-（MSI-turbo-fan-card-at-dual-PCIE-slots-with-10GB-VRAM）" class="headerlink" title="Nvidia CMP 50HX （MSI turbo fan card at dual PCIE slots, with 10GB VRAM）"></a>Nvidia CMP 50HX （MSI turbo fan card at dual PCIE slots, with 10GB VRAM）</h2><p><span style="font-size:3rem">Unless you are running integer arithmetic and double-precision floating-point, never select 50HX!!!</span></p>
+<p>YDJSIR spent 700 RMB on this piece of junk just to be the first to review it, so he basically lost money. As of November 5, 2022, the price of a 50HX is basically around 550 RMB with shipping, mainly for cards from MSI and Gigabyte. YDJSIR bought the MSI version because it’s so beautiful! With same look as MSI 2080Ti Turbo version, it looks nice.</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105193733507.png" alt="image-20221105193733507"></td>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105193810244.png" alt="image-20221105193810244"></td>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105193837492.png" alt="image-20221105193837492"></td>
+</tr>
+</tbody></table>
+<p>Even the PCB is the same, however, some elements and components are missing.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194135009.png" alt="image-20221105194135009"></p>
+<p>P106 Baidu Tieba) owner released version 526 with support for the entire series of mining cards. However, changing the 50HX is also useless. Below are two GPU-Z images. The 50HX cannot supplement the PCIE x16 channel like the 40HX can by supplementing the capacitor, but only to the x8 channel. It is said that there is a missing resistor. But in the face of its extremely weak single-precision floating point, what difference does it make whether or not the capacitor is supplemented?</p>
+<table>
+<thead>
+<tr>
+<th>Normal Driver</th>
+<th>Modified Driver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194247112.png" alt="image-20221105194247112"></td>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194227794.png" alt="image-20221105194227794"></td>
+</tr>
+</tbody></table>
+<p>Let’s take a look at its miserable single-precision floating-point performance.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194403326.png" alt="image-20221105194403326"></p>
+<p>Single precision floating-point and double precision floating-point are identical. Meanwhile, this card has a static power consumption of 68W, and the video encoding/decoding engine is always at full capacity. Some speculate that this is because the video encoding engine consumes single precision floating-point, which seems somewhat reasonable. What does 400GFLOPS of single precision floating-point mean? Take a look at the numbers for the GT720 and GT730 below. With such a trivial single precision floating-point, what value does modding it bring?</p>
+<table>
+<thead>
+<tr>
+<th>GT720</th>
+<th>GT730</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194830077.png" alt="image-20221105194830077"></td>
+<td><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105194946179.png" alt="image-20221105194946179"></td>
+</tr>
+</tbody></table>
+<p>This card has a high static power consumption, and the fan noise while running CUDA (all the points mentioned below are about rendering) is actually only 120W, which is bearable at around 18°C room temperature. Of course, when performing integer operations, it can really take off like a turbo engine. YDJSIR usually has it disabled in the device manager and only runs it when needed.</p>
+<p>You can just install CUDA 11.8 directly. The CUDA installation package can include the driver as well. Forget about Geforce Experience; it’s of no use in this scenario.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105195255462.png" alt="image-20221105195255462"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105200716053.png" alt="image-20221105200716053"></p>
+<p>Running Stable Diffusion has its value; the speed is comparable to the 1650S. The most crucial aspect is that this thing has enough VRAM, allowing for larger images and bigger batch sizes. YDJSIR enjoys it quite a bit. Of course, YDJSIR is just in it for the fun, as learning the incantations for magic is still necessary.</p>
+<p>Here are a few images as examples. It’s evident that they can also be processed with super-resolution tools.</p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105201508185.png" alt="image-20221105201508185"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105233128900.png" alt="image-20221105233128900"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20221105201910624.png" alt="image-20221105201910624"></p>
+<p>YDJSIR still feel that the details from this thing are quite absurd, but the general direction is pretty right. On the other hand, when it comes to drawing people without focusing on the hands, it genuinely feels quite good.</p>
+<p>At present, it can only generate small images to be placed in corners or reduce the resolution to play a supporting role; it still can’t take on a leading role.</p>
+<p>The bandwidth and single precision are quite poor, which limits the speed. It requires a lot of patience or to let it run continuously. It does add some fun, though.</p>
+<p>Of course, YDJSIR has also tried running it on the XPS with the 1650. That one is even slower and less interesting, so YDJSIR won’t mention it.</p>
+<h2 id="Nvidia-P106-090-（Zotac-with-single-fan-with-3G-VRAM）"><a href="#Nvidia-P106-090-（Zotac-with-single-fan-with-3G-VRAM）" class="headerlink" title="Nvidia P106-090 （Zotac with single fan, with 3G VRAM）"></a>Nvidia P106-090 （Zotac with single fan, with 3G VRAM）</h2><p>This card was acquired during the last downturn. At that time, the P106-100 was still over 500, while the P106-90 had already dropped to 98.</p>
+<p>From this experience, YDJSIR has drawn the following conclusions:</p>
+<ol>
+<li>Running power cables along the back is extremely elegant.</li>
+<li>M2 NVMe drives using PCIe may cause boot checks to fail.</li>
+<li>Your VGA cable might be faulty (a huge disappointment).</li>
+<li>The P106-90 is indeed a bit lacking… it’s not recommended to buy without an integrated graphics platform.</li>
+<li>Building a system with a half-white and a pure white component is very painful.</li>
+<li>It’s best not to attempt things that aren’t fully hands-on… (due to differences in perspective and the difficulties of solving problems from a distance).</li>
+</ol>
+<p>The following configuration list has been modified according to YDJSIR’s preferences and is not the actual build version!</p>
+<p><strong>Purpose:</strong> Long-term stable home server + light gaming (focusing on RTS and Minecraft) + deep learning and media rendering.</p>
+<p>The prices listed below are from around the summer of 2020.</p>
+<p>Here’s the translated configuration list with prices:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Details</th>
+<th>Price</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Power Supply</strong></td>
+<td>Second-hand 700W dual-card power supply (preferably from Great Wall or XinGu, modular is best)</td>
+<td>¥150</td>
+<td>Market price on Xianyu</td>
+</tr>
+<tr>
+<td><strong>Case</strong></td>
+<td>EATX case</td>
+<td>¥150</td>
+<td>Taobao</td>
+</tr>
+<tr>
+<td><strong>Motherboard</strong></td>
+<td>Huainanzhi X79 Flame God</td>
+<td>¥900</td>
+<td><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a1z0d.6639537.1997196601.4.7e837484udjxXm&id=572872304531">Link</a> (Huainanzhi official store)</td>
+</tr>
+<tr>
+<td><strong>CPU</strong></td>
+<td>E5 2650 v2</td>
+<td>Included above</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CPU Cooler</strong></td>
+<td>Arctic A600</td>
+<td>Included above</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RAM</strong></td>
+<td>Samsung RECC DDR3 8G 1600MHz</td>
+<td>¥85 × 4 = ¥340</td>
+<td><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a230r.1.14.33.10c35840pXRMQb&id=620944956523&ns=1&abbucket=20#detail">Link</a></td>
+</tr>
+<tr>
+<td><strong>Dummy GPU</strong></td>
+<td>Brand-name 1050 2G</td>
+<td>¥360</td>
+<td>Market price on Xianyu</td>
+</tr>
+<tr>
+<td><strong>CUDA Card</strong></td>
+<td>Relatively new orange P106-90</td>
+<td>¥100</td>
+<td>Market price on Xianyu</td>
+</tr>
+<tr>
+<td><strong>Wi-Fi Card + Wi-Fi (7)</strong></td>
+<td>Intel 3600AC-PCIE: Integrated Bluetooth Card</td>
+<td>¥48</td>
+<td><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a1z0d.6639537.1997196601.299.19f1748404uYSG&id=576911360843">Link</a> (Recommended by YDJSIR!)</td>
+</tr>
+<tr>
+<td><strong>SSD</strong></td>
+<td>SM961-256G-MLC</td>
+<td>¥319</td>
+<td><a target="_blank" rel="noopener" href="https://item.taobao.com/item.htm?spm=a1z0d.6639537.1997196601.4.64f07484NSjV0d&id=569659895912">Link</a></td>
+</tr>
+<tr>
+<td><strong>Monitor</strong></td>
+<td><strong>Not included in budget considerations</strong></td>
+<td>¥0</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Keyboard &amp; Mouse</strong></td>
+<td><strong>Not included in budget considerations</strong></td>
+<td>¥0</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HDD</strong></td>
+<td><strong>Random quantity, up to 2</strong></td>
+<td>¥120</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Stickers for Aesthetics</strong></td>
+<td>NY Fashion Line</td>
+<td>¥4</td>
+<td>For CPU, GPU, and system, etc.</td>
+</tr>
+<tr>
+<td><strong>Case Fans</strong></td>
+<td>RGB fans 12cm</td>
+<td>¥10 × 3</td>
+<td>It’s recommended to confirm the cooling situation before adding fans.</td>
+</tr>
+</tbody></table>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20200725233911443.png" alt="image-20200725233911443"></p>
+<p><img src= "/img/loading.gif" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/image-20200725234223457.png" alt="image-20200725234223457"></p>
+<p>The actual rendering performance of the P106 is similar to that of the GTX1050Ti. Its owner later got a proper GTX1050Ti as a dummy GPU. Considering the card isn’t too expensive, that’s how it ended up.</p>
+<h1 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h1><p>The AMD cards YDJSIR bought, whether second-hand or brand new, are just normal GPUs with no significant modifications. Perhaps when AMD’s compute cards become more powerful in the future, YDJSIR will consider getting one to play around with.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">YDJSIR</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://ydj.abn-team.top/2022/11/05/CMPGPU/">https://ydj.abn-team.top/2022/11/05/CMPGPU/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Garbage/">Garbage</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f0583da1a05b538" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/07/CloudFlinkCeph/"><img class="prev-cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/Ceph/image-20231027220616025.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Ceph Cluster Deployment and Testing in Huawei Cloud</div></div></a></div><div class="next-post pull-right"><a href="/2022/09/28/JMYZ/"><img class="next-cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/JMYZ/cover.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Frozen Memories——Memories in JMYZ</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/09/15/EduIPv6-OpenWRT/" title="OpenWRT with IPv6 in CERNET and Proxy"><img class="cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/EduIPv6Opwrt/OpenWRT-Cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-15</div><div class="title">OpenWRT with IPv6 in CERNET and Proxy</div></div></a></div><div><a href="/2021/01/31/Hackintosh/" title="YDJSIR's Hackintosh"><img class="cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/Hackintosh/cover.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-31</div><div class="title">YDJSIR's Hackintosh</div></div></a></div><div><a href="/2023/10/26/CodeGeex/" title="CodeGeeX2 Local Deployment Sample"><img class="cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/CodeGeex/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-26</div><div class="title">CodeGeeX2 Local Deployment Sample</div></div></a></div><div><a href="/2024/03/19/mobileWorkstations/" title="Mobile Workstation Experiences"><img class="cover" data-lazy-src="https://oss.ydjsir.com.cn/GitPages/MobileWorkstation/image-20240319230926029.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-19</div><div class="title">Mobile Workstation Experiences</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">YDJSIR</div><div class="author-info__description">Website of YDJSIR</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/YDJSIR-NJU"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/YDJSIR-NJU" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ydjsirhere@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nvidia"><span class="toc-number">1.</span> <span class="toc-text">Nvidia</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-RTX-2080Ti-Huaqiang-North-powered-water-cooling-with-22G-VRAM"><span class="toc-number">1.1.</span> <span class="toc-text">Nvidia RTX 2080Ti (Huaqiang North powered water cooling, with 22G VRAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-Tesla-M4-Founders-Edition-with-modified-fans-with-4GB-VRAM"><span class="toc-number">1.2.</span> <span class="toc-text">Nvidia Tesla M4 (Founders Edition with modified fans, with 4GB VRAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-Tesla-K20-Huaqiang-North-powered-modification-to-Titan-with-5GB-VRAM"><span class="toc-number">1.3.</span> <span class="toc-text">Nvidia Tesla K20 (Huaqiang North powered modification to Titan, with 5GB VRAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-Tesla-P40-Founders-Edition-with-turbo-fans-attached-outside-with-24GB-VRAM"><span class="toc-number">1.4.</span> <span class="toc-text">Nvidia Tesla P40  (Founders Edition with turbo fans attached outside, with 24GB VRAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-Tesla-M40-Founders-Edition-with-modified-fans-with-12GB-VRAM"><span class="toc-number">1.5.</span> <span class="toc-text">Nvidia Tesla M40  (Founders Edition with modified fans , with 12GB VRAM)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-CMP-50HX-%EF%BC%88MSI-turbo-fan-card-at-dual-PCIE-slots-with-10GB-VRAM%EF%BC%89"><span class="toc-number">1.6.</span> <span class="toc-text">Nvidia CMP 50HX （MSI turbo fan card at dual PCIE slots, with 10GB VRAM）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nvidia-P106-090-%EF%BC%88Zotac-with-single-fan-with-3G-VRAM%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">Nvidia P106-090 （Zotac with single fan, with 3G VRAM）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/19/mobileWorkstations/" title="Mobile Workstation Experiences"><img data-lazy-src="https://oss.ydjsir.com.cn/GitPages/MobileWorkstation/image-20240319230926029.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mobile Workstation Experiences"/></a><div class="content"><a class="title" href="/2024/03/19/mobileWorkstations/" title="Mobile Workstation Experiences">Mobile Workstation Experiences</a><time datetime="2024-03-18T16:58:32.000Z" title="Created 2024-03-19 00:58:32">2024-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/26/CodeGeex/" title="CodeGeeX2 Local Deployment Sample"><img data-lazy-src="https://oss.ydjsir.com.cn/GitPages/CodeGeex/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CodeGeeX2 Local Deployment Sample"/></a><div class="content"><a class="title" href="/2023/10/26/CodeGeex/" title="CodeGeeX2 Local Deployment Sample">CodeGeeX2 Local Deployment Sample</a><time datetime="2023-10-26T03:09:25.000Z" title="Created 2023-10-26 11:09:25">2023-10-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/07/CloudFlinkCeph/" title="Ceph Cluster Deployment and Testing in Huawei Cloud"><img data-lazy-src="https://oss.ydjsir.com.cn/GitPages/Ceph/image-20231027220616025.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ceph Cluster Deployment and Testing in Huawei Cloud"/></a><div class="content"><a class="title" href="/2023/10/07/CloudFlinkCeph/" title="Ceph Cluster Deployment and Testing in Huawei Cloud">Ceph Cluster Deployment and Testing in Huawei Cloud</a><time datetime="2023-10-07T09:10:44.000Z" title="Created 2023-10-07 17:10:44">2023-10-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/05/CMPGPU/" title="Well Exercised GPUs Come Roaring Back"><img data-lazy-src="https://oss.ydjsir.com.cn/GitPages/X79andP106/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Well Exercised GPUs Come Roaring Back"/></a><div class="content"><a class="title" href="/2022/11/05/CMPGPU/" title="Well Exercised GPUs Come Roaring Back">Well Exercised GPUs Come Roaring Back</a><time datetime="2022-11-05T15:48:39.000Z" title="Created 2022-11-05 23:48:39">2022-11-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/28/JMYZ/" title="Frozen Memories——Memories in JMYZ"><img data-lazy-src="https://oss.ydjsir.com.cn/GitPages/JMYZ/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frozen Memories——Memories in JMYZ"/></a><div class="content"><a class="title" href="/2022/09/28/JMYZ/" title="Frozen Memories——Memories in JMYZ">Frozen Memories——Memories in JMYZ</a><time datetime="2022-09-28T13:56:01.000Z" title="Created 2022-09-28 21:56:01">2022-09-28</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By YDJSIR</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">YDJSIR recommends you to visit YDJSIR's Chinese site for more information.</div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn"><span>粤ICP备20028390号-1</span></a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302320916"><img class="icp-icon" src="/img/icp.png" alt="icon"/><span>苏公网安备 32011302320916号</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.spacingElementById('content-inner')
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js', () => {
+      pangu.spacingElementById('content-inner')
+    })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguFn)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
+  if (window.mermaidJsLoad) mermaid.init()
+  else {
+    $.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js', function () {
+      window.mermaidJsLoad = true
+      mermaid.initialize({
+        theme: 'default',
+      })
+      false && mermaid.init()
+    })
+  }
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>
